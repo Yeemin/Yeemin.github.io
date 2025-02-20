@@ -1,0 +1,568 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>AI学习大纲（deepseek生成）</title>
+    <url>/2025/02/17/ailearnoutline/</url>
+    <content><![CDATA[<p>（本文由deepseek生成）以下是针对 Java 背景程序员深入学习 AI 开发的完善学习路线：</p>
+<hr>
+<h3 id="一、基础准备（数学-编程）"><a href="#一、基础准备（数学-编程）" class="headerlink" title="一、基础准备（数学 + 编程）"></a><strong>一、基础准备（数学 + 编程）</strong></h3><p>AI 的核心是数学和算法，因此需要先打好基础。</p>
+<h4 id="1-数学基础"><a href="#1-数学基础" class="headerlink" title="1. 数学基础"></a>1. 数学基础</h4><ul>
+<li><strong>目标</strong>：掌握 AI 必须的核心数学知识。</li>
+<li><strong>内容</strong>：<ul>
+<li><strong>线性代数</strong>：矩阵、向量、特征值、奇异值、线性变换。</li>
+<li><strong>微积分</strong>：导数、梯度、偏导数、积分。</li>
+<li><strong>概率与统计</strong>：概率分布（正态分布、贝叶斯定理）、期望、方差、假设检验。</li>
+<li><strong>优化方法</strong>：梯度下降、随机梯度下降。</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-学习-Python"><a href="#2-学习-Python" class="headerlink" title="2. 学习 Python"></a>2. 学习 Python</h4><ul>
+<li><strong>目标</strong>：AI 领域主要使用 Python，需要熟练掌握。</li>
+<li><strong>内容</strong>：<ul>
+<li>基础语法（变量、数据类型、循环、函数）。</li>
+<li>数据结构（列表、元组、字典、集合）。</li>
+<li>文件操作、模块导入、异常处理。</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-学习常用工具和库"><a href="#3-学习常用工具和库" class="headerlink" title="3. 学习常用工具和库"></a>3. 学习常用工具和库</h4><ul>
+<li><strong>目标</strong>：掌握 AI 开发中常用的 Python 库。</li>
+<li><strong>内容</strong>：<ul>
+<li><strong>NumPy</strong>：数组运算。</li>
+<li><strong>Pandas</strong>：数据处理与分析。</li>
+<li><strong>Matplotlib/Seaborn</strong>：数据可视化。</li>
+<li><strong>Scikit-learn</strong>：机器学习算法库。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="二、机器学习基础"><a href="#二、机器学习基础" class="headerlink" title="二、机器学习基础"></a><strong>二、机器学习基础</strong></h3><p>从简单到复杂的机器学习算法，掌握核心概念。</p>
+<h4 id="1-概念和理论"><a href="#1-概念和理论" class="headerlink" title="1. 概念和理论"></a>1. 概念和理论</h4><ul>
+<li><strong>目标</strong>：理解机器学习的基本原理。</li>
+<li><strong>内容</strong>：<ul>
+<li>监督学习（分类、回归）。</li>
+<li>无监督学习（聚类、降维）。</li>
+<li>模型评估（准确率、召回率、ROC 曲线）。</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-常见算法"><a href="#2-常见算法" class="headerlink" title="2. 常见算法"></a>2. 常见算法</h4><ul>
+<li><strong>目标</strong>：掌握经典的机器学习算法。</li>
+<li><strong>内容</strong>：<ul>
+<li>线性回归（Linear Regression）。</li>
+<li>逻辑回归（Logistic Regression）。</li>
+<li>支持向量机（SVM）。</li>
+<li>决策树与随机森林（Tree、Random Forest）。</li>
+<li>K 均值聚类（K-Means）。</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-实践项目"><a href="#3-实践项目" class="headerlink" title="3. 实践项目"></a>3. 实践项目</h4><ul>
+<li><strong>目标</strong>：通过实践巩固理论知识。</li>
+<li><strong>内容</strong>：<ul>
+<li>使用 Scikit-learn 实现分类任务（如 MNIST 手写数字识别）。</li>
+<li>数据预处理、特征工程、模型调参。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="三、深度学习入门"><a href="#三、深度学习入门" class="headerlink" title="三、深度学习入门"></a><strong>三、深度学习入门</strong></h3><p>从基础的神经网络开始，逐步深入到深度学习。</p>
+<h4 id="1-神经网络基础"><a href="#1-神经网络基础" class="headerlink" title="1. 神经网络基础"></a>1. 神经网络基础</h4><ul>
+<li><strong>目标</strong>：理解神经网络的基本原理。</li>
+<li><strong>内容</strong>：<ul>
+<li>神经元模型（Perceptron）。</li>
+<li>激活函数（ReLU、Sigmoid、Tanh）。</li>
+<li>损失函数（交叉熵损失、均方误差）。</li>
+<li>反向传播与梯度下降。</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-常见深度学习框架"><a href="#2-常见深度学习框架" class="headerlink" title="2. 常见深度学习框架"></a>2. 常见深度学习框架</h4><ul>
+<li><strong>目标</strong>：掌握主流的深度学习框架。</li>
+<li><strong>内容</strong>：<ul>
+<li><strong>TensorFlow</strong>：使用 Keras API 构建和训练模型。</li>
+<li><strong>PyTorch</strong>：动态计算图，适合研究和实验。</li>
+<li><strong>Keras</strong>：快速搭建神经网络。</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-常见模型"><a href="#3-常见模型" class="headerlink" title="3. 常见模型"></a>3. 常见模型</h4><ul>
+<li><strong>目标</strong>：掌握经典的深度学习模型。</li>
+<li><strong>内容</strong>：<ul>
+<li>卷积神经网络（CNN）：图像分类任务。</li>
+<li>循环神经网络（RNN/LSTM/GRU）：序列数据处理。</li>
+<li>Transformer 模型：自然语言处理。</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-实践项目"><a href="#4-实践项目" class="headerlink" title="4. 实践项目"></a>4. 实践项目</h4><ul>
+<li><strong>目标</strong>：通过实践掌握深度学习模型。</li>
+<li><strong>内容</strong>：<ul>
+<li>使用 MNIST 数据集训练一个 CNN 模型。</li>
+<li>使用 LSTM 实现时间序列预测或文本生成。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="四、结合-Java-进行-AI-开发"><a href="#四、结合-Java-进行-AI-开发" class="headerlink" title="四、结合 Java 进行 AI 开发"></a><strong>四、结合 Java 进行 AI 开发</strong></h3><p>作为 Java 背景的程序员，可以将 Java 与 AI 结合起来开发。</p>
+<h4 id="1-学习-Java-的-AI-库"><a href="#1-学习-Java-的-AI-库" class="headerlink" title="1. 学习 Java 的 AI 库"></a>1. 学习 Java 的 AI 库</h4><ul>
+<li><strong>目标</strong>：掌握基于 Java 的 AI 开发工具。</li>
+<li><strong>内容</strong>：<ul>
+<li><strong>DL4J（Deep Learning for Java）</strong>：基于 Java 的深度学习库，支持 TensorFlow 后端。</li>
+<li><strong>H2O</strong>：分布式机器学习平台，支持 Java 和 Python。</li>
+<li><strong>ONNX Runtime for Java</strong>：运行 ONNX 模型的 Java 库。</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-实践项目"><a href="#2-实践项目" class="headerlink" title="2. 实践项目"></a>2. 实践项目</h4><ul>
+<li><strong>目标</strong>：将 AI 技术应用到 Java 项目中。</li>
+<li><strong>内容</strong>：<ul>
+<li>使用 DL4J 在 Java 环境中训练和部署模型。</li>
+<li>使用 H2O 进行分布式机器学习任务。</li>
+<li>将 Python 训练的模型导出为 ONNX 格式，在 Java 中使用。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="五、进阶学习"><a href="#五、进阶学习" class="headerlink" title="五、进阶学习"></a><strong>五、进阶学习</strong></h3><p>根据兴趣选择方向，深入研究特定领域。</p>
+<h4 id="1-自然语言处理（NLP）"><a href="#1-自然语言处理（NLP）" class="headerlink" title="1. 自然语言处理（NLP）"></a>1. 自然语言处理（NLP）</h4><ul>
+<li><strong>目标</strong>：掌握 NLP 的核心技术。</li>
+<li><strong>内容</strong>：<ul>
+<li>词嵌入（Word2Vec、GloVe）。</li>
+<li>Transformer 模型（BERT、GPT）。</li>
+<li>序列到序列模型（Seq2Seq）。</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-图像处理与计算机视觉"><a href="#2-图像处理与计算机视觉" class="headerlink" title="2. 图像处理与计算机视觉"></a>2. 图像处理与计算机视觉</h4><ul>
+<li><strong>目标</strong>：掌握图像处理和计算机视觉技术。</li>
+<li><strong>内容</strong>：<ul>
+<li>OpenCV 基础。</li>
+<li>目标检测（YOLO、Faster R-CNN）。</li>
+<li>图像分割（U-Net）。</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-强化学习"><a href="#3-强化学习" class="headerlink" title="3. 强化学习"></a>3. 强化学习</h4><ul>
+<li><strong>目标</strong>：理解强化学习的核心思想。</li>
+<li><strong>内容</strong>：<ul>
+<li>策略网络（Q-Learning、DQN）。</li>
+<li>多智能体强化学习。</li>
+<li>应用场景（游戏 AI、机器人控制）。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="六、部署与应用"><a href="#六、部署与应用" class="headerlink" title="六、部署与应用"></a><strong>六、部署与应用</strong></h3><p>将模型部署到实际项目中，完成从开发到生产的全流程。</p>
+<h4 id="1-模型部署"><a href="#1-模型部署" class="headerlink" title="1. 模型部署"></a>1. 模型部署</h4><ul>
+<li><strong>目标</strong>：掌握模型的部署方法。</li>
+<li><strong>内容</strong>：<ul>
+<li>使用 Flask 或 FastAPI 部署机器学习模型。</li>
+<li>使用 Docker 容器化模型服务。</li>
+<li>部署到云平台（AWS、Azure、Google Cloud）。</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-实践项目-1"><a href="#2-实践项目-1" class="headerlink" title="2. 实践项目"></a>2. 实践项目</h4><ul>
+<li><strong>目标</strong>：完成一个完整的 AI 项目。</li>
+<li><strong>内容</strong>：<ul>
+<li>数据收集与预处理。</li>
+<li>模型训练与调参。</li>
+<li>模型部署与监控。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="七、持续学习"><a href="#七、持续学习" class="headerlink" title="七、持续学习"></a><strong>七、持续学习</strong></h3><p>AI 技术发展迅速，需要不断学习和更新知识。</p>
+<h4 id="1-关注前沿技术"><a href="#1-关注前沿技术" class="headerlink" title="1. 关注前沿技术"></a>1. 关注前沿技术</h4><ul>
+<li><strong>目标</strong>：了解 AI 领域的最新进展。</li>
+<li><strong>内容</strong>：<ul>
+<li>跟踪顶会论文（NeurIPS、ICML、CVPR）。</li>
+<li>学习最新的算法和技术（如大语言模型、扩散模型）。</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-参与开源项目"><a href="#2-参与开源项目" class="headerlink" title="2. 参与开源项目"></a>2. 参与开源项目</h4><ul>
+<li><strong>目标</strong>：通过贡献代码提升能力。</li>
+<li><strong>内容</strong>：<ul>
+<li>参与 GitHub 上的 AI 开源项目。</li>
+<li>贡献自己的代码或文档。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h3><p>从数学基础到实践部署，AI 的学习需要循序渐进。作为 Java 程序员，可以结合自身优势，将 Java 与 AI 技术结合起来，开发出更具竞争力的应用。通过不断的学习和实践，逐步成为 AI 领域的专家。</p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>AI</tag>
+        <tag>python</tag>
+        <tag>学习</tag>
+        <tag>deepseek</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>测试各种插件以及写法</title>
+    <url>/2021/06/25/demo/</url>
+    <content><![CDATA[<h2 id="测试标题"><a href="#测试标题" class="headerlink" title="测试标题"></a>测试标题</h2><p>下面是图片的显示<br><img src="/2021/06/25/demo/批注 2019-11-28 001956.jpg" alt></p>
+<h2 id="测试一下html标签"><a href="#测试一下html标签" class="headerlink" title="测试一下html标签"></a>测试一下html标签</h2><p><a href="https://www.baidu.com" target="_blank" rel="noopener">百度一下</a></p>
+<ul><br>    <li>a</li><br>    <li>b</li><br>    <li>c</li><br></ul>
+
+<p><span style="color: RED;">还能设置样式</span></p>
+<h2 id="测试js标签"><a href="#测试js标签" class="headerlink" title="测试js标签"></a>测试js标签</h2><div id="test_js"></div>
+
+<script>
+document.getElementById("test_js").innerHTML = '<p>这句话是通过javascript控制显示的</p>';
+</script>
+
+<div id="vue_1"><br>{{ message }}<br></div>
+
+<script>
+var app = new Vue({
+  el: '#vue_1',
+  data: {
+    message: '如果想使用Vue，由于Hexo会转义{{}}，所以要用 \{\% raw \%\} \{\% endraw \%\}包围双大括号'
+  }
+})
+</script>
+
+<div id="app_6"><br>  <div><br>  {{ message }}<br>  </div><br>  <input v-model="message"><br></div>
+
+<p><script><br>var app6 = new Vue({<br>  el: ‘#app_6’,<br>  data: {<br>    message: ‘摘自Vue官网Demo’<br>  }<br>})<br></script></p>
+<h2 id="试试Mermaid"><a href="#试试Mermaid" class="headerlink" title="试试Mermaid"></a>试试Mermaid</h2><p>html代码形式：<br>代码：<br>< pre class=”mermaid” ><br>      graph LR<br>          A — B<br>          B–&gt;C[fa:fa-ban forbidden]<br>          B–&gt;D(fa:fa-spinner hah);<br> < /pre > </p>
+<pre class="mermaid">
+      graph LR
+          A --- B
+          B-->C[fa:fa-ban forbidden]
+          B-->D(fa:fa-spinner hah);
+</pre>
+
+<p>markdown语法：</p>
+<p>暂时不支持下面的写法</p>
+ ```  mermaid<br>sequenceDiagram<br>    Alice-&gt;&gt;+John: Hello John, how are you?<br>    Alice-&gt;&gt;+John: John, can you hear me?<br>    John–&gt;&gt;-Alice: Hi Alice, I can hear you!<br>    John–&gt;&gt;-Alice: I feel great!<br> ``` 
+<h2 id="关于部署"><a href="#关于部署" class="headerlink" title="关于部署"></a>关于部署</h2><p>提交到github后，action自动部署应用（折腾了好久，居然是密钥用错了，cat ~/.ssh/id_rs）</p>
+]]></content>
+      <categories>
+        <category>测试分类</category>
+      </categories>
+      <tags>
+        <tag>测试</tag>
+        <tag>图片</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java开发者玩AI的学习路线（deepseek生成）</title>
+    <url>/2025/02/18/java2ai/</url>
+    <content><![CDATA[<p>（本文由deepseek生成）以下是一份为多年工作经验的Java开发工程师设计的学习人工智能（AI）开发的路线图：</p>
+<hr>
+<h3 id="第一阶段：掌握基础知识"><a href="#第一阶段：掌握基础知识" class="headerlink" title="第一阶段：掌握基础知识"></a><strong>第一阶段：掌握基础知识</strong></h3><h4 id="1-学习Python"><a href="#1-学习Python" class="headerlink" title="1. 学习Python"></a>1. <strong>学习Python</strong></h4><ul>
+<li>AI领域的绝大多数工具和库（如TensorFlow、PyTorch、Scikit-learn等）都是基于Python的。</li>
+<li>建议先从基础的Python语法入手，重点掌握：<ul>
+<li>数据结构（列表、字典、集合等）</li>
+<li>函数与模块</li>
+<li>异常处理</li>
+<li>文件操作</li>
+</ul>
+</li>
+<li>进一步学习高级特性：面向对象编程、装饰器、生成器、异步编程等。</li>
+</ul>
+<h4 id="2-数学基础"><a href="#2-数学基础" class="headerlink" title="2. 数学基础"></a>2. <strong>数学基础</strong></h4><ul>
+<li>AI的核心是数学，需要掌握以下内容：<ul>
+<li><strong>线性代数</strong>：向量、矩阵、张量运算。</li>
+<li><strong>微积分</strong>：导数、梯度下降等优化算法。</li>
+<li><strong>概率论与统计学</strong>：分布（正态、泊松等）、假设检验、贝叶斯定理。</li>
+</ul>
+</li>
+<li>推荐资源：<ul>
+<li>《线性代数应该这样学》</li>
+<li>《数学分析》或相关的在线课程。</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-编程与工具"><a href="#3-编程与工具" class="headerlink" title="3. 编程与工具"></a>3. <strong>编程与工具</strong></h4><ul>
+<li>熟悉常用AI开发工具，例如：<ul>
+<li>Jupyter Notebook（用于快速实验和原型开发）</li>
+<li>VS Code（支持Python和深度学习框架的扩展）</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="第二阶段：机器学习基础"><a href="#第二阶段：机器学习基础" class="headerlink" title="第二阶段：机器学习基础"></a><strong>第二阶段：机器学习基础</strong></h3><h4 id="1-掌握机器学习核心概念"><a href="#1-掌握机器学习核心概念" class="headerlink" title="1. 掌握机器学习核心概念"></a>1. <strong>掌握机器学习核心概念</strong></h4><ul>
+<li>学习并理解以下算法及其原理：<ul>
+<li>线性回归</li>
+<li>支持向量机（SVM）</li>
+<li>决策树与随机森林</li>
+<li>聚类算法（K-means、层次聚类等）</li>
+<li>混淆矩阵与模型评估指标（Precision、Recall、F1-score）。</li>
+</ul>
+</li>
+<li>推荐资源：<br>-《机器学习实战》（中文版）<ul>
+<li>Andrew Ng 的《机器学习课程》（Coursera）</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-实践项目"><a href="#2-实践项目" class="headerlink" title="2. 实践项目"></a>2. <strong>实践项目</strong></h4><ul>
+<li>找到公开的数据集（如Kaggle），并尝试用不同的算法解决问题。</li>
+<li>示例项目：鸢尾花分类、房价预测等。</li>
+</ul>
+<hr>
+<h3 id="第三阶段：深度学习入门"><a href="#第三阶段：深度学习入门" class="headerlink" title="第三阶段：深度学习入门"></a><strong>第三阶段：深度学习入门</strong></h3><h4 id="1-学习深度学习框架"><a href="#1-学习深度学习框架" class="headerlink" title="1. 学习深度学习框架"></a>1. <strong>学习深度学习框架</strong></h4><ul>
+<li>掌握以下框架中的一种或两种：<ul>
+<li>TensorFlow</li>
+<li>PyTorch（推荐，因其灵活性高）</li>
+</ul>
+</li>
+<li>学习基础API和使用方法，重点理解：<ul>
+<li>张量与变量的运算</li>
+<li>模型定义、前向传播与反向传播</li>
+<li>优化器的选择与配置（Adam、SGD等）</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-神经网络基础"><a href="#2-神经网络基础" class="headerlink" title="2. 神经网络基础"></a>2. <strong>神经网络基础</strong></h4><ul>
+<li>学习并实现以下神经网络模型：<ul>
+<li>卷积神经网络（CNN）</li>
+<li>循环神经网络（RNN）</li>
+<li>长短期记忆网络（LSTM）</li>
+</ul>
+</li>
+<li>理解梯度下降的变种（如Adam、SGD Momentum）及其优化策略。</li>
+</ul>
+<h4 id="3-实战项目"><a href="#3-实战项目" class="headerlink" title="3. 实战项目"></a>3. <strong>实战项目</strong></h4><ul>
+<li>使用深度学习框架进行图像分类、自然语言处理等任务。</li>
+<li>示例：使用MNIST数据集训练手写数字识别模型。</li>
+</ul>
+<hr>
+<h3 id="第四阶段：进阶与应用"><a href="#第四阶段：进阶与应用" class="headerlink" title="第四阶段：进阶与应用"></a><strong>第四阶段：进阶与应用</strong></h3><h4 id="1-探索生成式AI"><a href="#1-探索生成式AI" class="headerlink" title="1. 探索生成式AI"></a>1. <strong>探索生成式AI</strong></h4><ul>
+<li>学习生成对抗网络（GAN）、变分自编码器（VAE）和扩散模型（DPM）。</li>
+<li>实现简单的图像生成或文本生成任务。</li>
+</ul>
+<h4 id="2-自然语言处理（NLP）"><a href="#2-自然语言处理（NLP）" class="headerlink" title="2. 自然语言处理（NLP）"></a>2. <strong>自然语言处理（NLP）</strong></h4><ul>
+<li>学习词嵌入（Word2Vec、GloVe）</li>
+<li>掌握序列模型（Transformer、BERT等预训练模型）</li>
+<li>实现文本分类、机器翻译等任务。</li>
+<li>示例：使用Hugging Face的Transformers库进行情感分析。</li>
+</ul>
+<h4 id="3-计算机视觉"><a href="#3-计算机视觉" class="headerlink" title="3. 计算机视觉"></a>3. <strong>计算机视觉</strong></h4><ul>
+<li>深入学习目标检测（Faster R-CNN、YOLO）、图像分割（U-Net）等技术。</li>
+<li>使用预训练模型进行迁移学习，解决实际问题。</li>
+<li>示例：使用OpenCV和YOLO实现简单的物体检测。</li>
+</ul>
+<h4 id="4-部署与应用"><a href="#4-部署与应用" class="headerlink" title="4. 部署与应用"></a>4. <strong>部署与应用</strong></h4><ul>
+<li>学习将AI模型部署为API或集成到现有系统中。</li>
+<li>掌握容器化（Docker）与 orchestration（Kubernetes）技术，以便管理AI服务。</li>
+<li>示例：使用Flask或FastAPI搭建一个预测服务。</li>
+</ul>
+<hr>
+<h3 id="第五阶段：长期学习与发展"><a href="#第五阶段：长期学习与发展" class="headerlink" title="第五阶段：长期学习与发展"></a><strong>第五阶段：长期学习与发展</strong></h3><h4 id="1-持续学习新技术"><a href="#1-持续学习新技术" class="headerlink" title="1. 持续学习新技术"></a>1. <strong>持续学习新技术</strong></h4><ul>
+<li>关注AI领域的最新进展，例如：<ul>
+<li>大语言模型（如GPT-4、PaLM）</li>
+<li>图神经网络</li>
+<li>自监督学习</li>
+</ul>
+</li>
+<li>参加线上线下的AI技术会议或分享会。</li>
+</ul>
+<h4 id="2-参与开源项目"><a href="#2-参与开源项目" class="headerlink" title="2. 参与开源项目"></a>2. <strong>参与开源项目</strong></h4><ul>
+<li>贡献到AI相关的开源项目，提升自己的实践能力。</li>
+<li>示例：贡献到TensorFlow、PyTorch等框架的社区。</li>
+</ul>
+<h4 id="3-行业应用"><a href="#3-行业应用" class="headerlink" title="3. 行业应用"></a>3. <strong>行业应用</strong></h4><ul>
+<li>根据自身兴趣和行业需求，选择特定领域（如金融、医疗、自动驾驶）深入研究。</li>
+<li>示例：<ul>
+<li>在金融领域进行风险评估与欺诈检测。</li>
+<li>在医疗领域尝试疾病预测与图像分析。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="推荐资源"><a href="#推荐资源" class="headerlink" title="推荐资源"></a><strong>推荐资源</strong></h3><ol>
+<li><strong>书籍</strong>：<ul>
+<li>《Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow》</li>
+<li>《Deep Learning》（Ian Goodfellow 等著）</li>
+</ul>
+</li>
+<li><strong>在线课程</strong>：<ul>
+<li>Coursera：Andrew Ng 的《机器学习》和《深度学习专项课程》。</li>
+<li>Fast.ai：简明的深度学习课程。</li>
+</ul>
+</li>
+<li><strong>工具与平台</strong>：<ul>
+<li>Kaggle：数据科学竞赛与项目。</li>
+<li>Hugging Face：NLP模型库。</li>
+<li>GitHub：AI相关的开源项目。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h3><p>作为一位有多年Java经验的工程师，你已经具备扎实的技术基础。通过以上路线图的学习，可以快速掌握人工智能的核心技术，并将其应用到实际项目中。记住，AI领域发展迅速，保持学习和实践是关键！</p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>学习</tag>
+        <tag>deepseek</tag>
+        <tag>ai</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>虚拟机安装RHEL-7.9后续系统设置记录</title>
+    <url>/2024/01/17/local-linux-rhel79/</url>
+    <content><![CDATA[<blockquote>
+<p>本文用于初始安装RHEL 7.9版本的后续系统设置记录，把虚拟机参数调整成可用于服务器的设置</p>
+</blockquote>
+<h1 id="系统时区设置"><a href="#系统时区设置" class="headerlink" title="系统时区设置"></a>系统时区设置</h1><h2 id="设置时区为东八区："><a href="#设置时区为东八区：" class="headerlink" title="设置时区为东八区："></a>设置时区为东八区：</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">timedatectl set-timezone Asia/Shanghai</span><br></pre></td></tr></table></figure>
+<h2 id="设置为24小时制"><a href="#设置为24小时制" class="headerlink" title="设置为24小时制"></a>设置为24小时制</h2><blockquote>
+<p>暂无</p>
+</blockquote>
+<h1 id="更换yum源"><a href="#更换yum源" class="headerlink" title="更换yum源"></a>更换yum源</h1><blockquote>
+<p>这一步可以不用做</p>
+<p>由于RHEL 7的更新包只对注册用户有效，所以需要安装CentOS的yum软件包，下面第4步会提供安装包下载链接。</p>
+</blockquote>
+<h2 id="查看yum的软件包"><a href="#查看yum的软件包" class="headerlink" title="查看yum的软件包"></a>查看yum的软件包</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">rpm -qa | grep yum</span><br></pre></td></tr></table></figure>
+<p>输出如下内容</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum-langpacks-0.4.2-7.el7.noarch</span><br><span class="line">yum-metadata-parser-1.1.4-10.el7.x86_64</span><br><span class="line">yum-utils-1.1.31-54.el7_8.noarch</span><br><span class="line">yum-3.4.3-168.el7.noarch</span><br><span class="line">yum-rhn-plugin-2.0.1-10.el7.noarch</span><br></pre></td></tr></table></figure>
+<h2 id="卸载yum软件包"><a href="#卸载yum软件包" class="headerlink" title="卸载yum软件包"></a>卸载yum软件包</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">rpm -qa | grep yum | xargs rpm -e --nodeps</span><br></pre></td></tr></table></figure>
+<h2 id="检查卸载结果"><a href="#检查卸载结果" class="headerlink" title="检查卸载结果"></a>检查卸载结果</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">rpm -qa | grep yum</span><br></pre></td></tr></table></figure>
+<p>没有输出。</p>
+<h2 id="安装CentOS的yum软件包"><a href="#安装CentOS的yum软件包" class="headerlink" title="安装CentOS的yum软件包"></a>安装CentOS的yum软件包</h2><p>本地上传CentOS的yum软件包，然后执行下面的命令安装</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">rpm -ivh *</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><a href="https://yeemin.site/resources/yum.zip" target="_blank">yum安装包下载</a></p>
+</blockquote>
+<p>输出如下内容</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">警告：yum-3.4.3-132.el7.centos.0.1.noarch.rpm: 头V3 RSA/SHA256 Signature, 密钥 ID f4a80eb5: NOKEY</span><br><span class="line">准备中...                          <span class="comment">################################# [100%]</span></span><br><span class="line">正在升级/安装...</span><br><span class="line">   1:yum-metadata-parser-1.1.4-10.el7 <span class="comment">################################# [ 20%]</span></span><br><span class="line">   2:yum-plugin-fastestmirror-1.1.31-3<span class="comment">################################# [ 40%]</span></span><br><span class="line">   3:yum-3.4.3-132.el7.centos.0.1     <span class="comment">################################# [ 60%]</span></span><br><span class="line">   4:yum-updateonboot-1.1.31-34.el7   <span class="comment">################################# [ 80%]</span></span><br><span class="line">   5:yum-utils-1.1.31-34.el7          <span class="comment">################################# [100%]</span></span><br></pre></td></tr></table></figure>
+<p>检查是否安装完成</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">rpm -qa | grep yum</span><br></pre></td></tr></table></figure>
+<p>输出如下内容</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum-3.4.3-132.el7.centos.0.1.noarch</span><br><span class="line">yum-plugin-fastestmirror-1.1.31-34.el7.noarch</span><br><span class="line">yum-updateonboot-1.1.31-34.el7.noarch</span><br><span class="line">yum-metadata-parser-1.1.4-10.el7.x86_64</span><br><span class="line">yum-utils-1.1.31-34.el7.noarch</span><br></pre></td></tr></table></figure>
+<h2 id="更换源"><a href="#更换源" class="headerlink" title="更换源"></a>更换源</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vi /etc/yum.repos.d/redhat.repo</span><br></pre></td></tr></table></figure>
+<p>添加如下的结果到此文件</p>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">[base]</span></span><br><span class="line"><span class="attr">name</span>=<span class="string">CentOS-7 - Base - 163.com</span></span><br><span class="line"><span class="comment">#mirrorlist=http://mirrorlist.centos.org/?release=7&amp;arch=x86_64&amp;repo=os</span></span><br><span class="line"><span class="attr">baseurl</span>=<span class="string">http://mirrors.163.com/centos/7/os/x86_64/</span></span><br><span class="line"><span class="attr">enabled</span>=<span class="string">1</span></span><br><span class="line"><span class="attr">gpgcheck</span>=<span class="string">1</span></span><br><span class="line"><span class="attr">gpgkey</span>=<span class="string">http://mirrors.163.com/centos/RPM-GPG-KEY-CentOS-7</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">#released updates</span></span><br><span class="line"><span class="attr">[updates]</span></span><br><span class="line"><span class="attr">name</span>=<span class="string">CentOS-7 - Updates - 163.com</span></span><br><span class="line"><span class="comment">#mirrorlist=http://mirrorlist.centos.org/?release=7&amp;arch=x86_64&amp;repo=updates</span></span><br><span class="line"><span class="attr">baseurl</span>=<span class="string">http://mirrors.163.com/centos/7/updates/x86_64/</span></span><br><span class="line"><span class="attr">gpgcheck</span>=<span class="string">1</span></span><br><span class="line"><span class="attr">gpgkey</span>=<span class="string">http://mirrors.163.com/centos/RPM-GPG-KEY-CentOS-7</span></span><br><span class="line"><span class="attr">enabled</span>=<span class="string">1</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">#additional packages that may be useful</span></span><br><span class="line"><span class="attr">[extras]</span></span><br><span class="line"><span class="attr">name</span>=<span class="string">CentOS-7 - Extras - 163.com</span></span><br><span class="line"><span class="comment">#mirrorlist=http://mirrorlist.centos.org/?release=7&amp;arch=x86_64&amp;repo=extras</span></span><br><span class="line"><span class="attr">baseurl</span>=<span class="string">http://mirrors.163.com/centos/7/extras/x86_64/</span></span><br><span class="line"><span class="attr">gpgcheck</span>=<span class="string">1</span></span><br><span class="line"><span class="attr">enabled</span>=<span class="string">1</span></span><br><span class="line"><span class="attr">gpgkey</span>=<span class="string">http://mirrors.163.com/centos/RPM-GPG-KEY-CentOS-7</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">#additional packages that extend functionality of existing packages</span></span><br><span class="line"><span class="attr">[centosplus]</span></span><br><span class="line"><span class="attr">name</span>=<span class="string">CentOS-7 - Plus - 163.com</span></span><br><span class="line"><span class="attr">baseurl</span>=<span class="string">http://mirrors.163.com/centos/7/centosplus/x86_64/</span></span><br><span class="line"><span class="attr">gpgcheck</span>=<span class="string">1</span></span><br><span class="line"><span class="attr">enabled</span>=<span class="string">0</span></span><br><span class="line"><span class="attr">gpgkey</span>=<span class="string">http://mirrors.163.com/centos/RPM-GPG-KEY-CentOS-7</span></span><br></pre></td></tr></table></figure>
+<h2 id="清理缓存"><a href="#清理缓存" class="headerlink" title="清理缓存"></a>清理缓存</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum clean all</span><br></pre></td></tr></table></figure>
+<h2 id="愉快的更新软件"><a href="#愉快的更新软件" class="headerlink" title="愉快的更新软件"></a>愉快的更新软件</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum update</span><br></pre></td></tr></table></figure>
+<h1 id="关闭防火墙"><a href="#关闭防火墙" class="headerlink" title="关闭防火墙"></a>关闭防火墙</h1><h2 id="查看防火墙状态"><a href="#查看防火墙状态" class="headerlink" title="查看防火墙状态"></a>查看防火墙状态</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">systemctl status firewalld</span><br></pre></td></tr></table></figure>
+<p>输出如下内容</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">● firewalld.service - firewalld - dynamic firewall daemon</span><br><span class="line">   Loaded: loaded (/usr/lib/systemd/system/firewalld.service; enabled; vendor preset: enabled)</span><br><span class="line">   Active: active (running) since 三 2024-01-17 13:34:44 CST; 7min ago</span><br><span class="line">     Docs: man:firewalld(1)</span><br><span class="line"> Main PID: 708 (firewalld)</span><br><span class="line">   CGroup: /system.slice/firewalld.service</span><br><span class="line">           └─708 /usr/bin/python2 -Es /usr/sbin/firewalld --nofork --nopid</span><br><span class="line"></span><br><span class="line">1月 17 13:34:43 localhost.localdomain systemd[1]: Starting firewalld - dynamic firewall daemon...</span><br><span class="line">1月 17 13:34:44 localhost.localdomain systemd[1]: Started firewalld - dynamic firewall daemon.</span><br><span class="line">1月 17 13:34:45 localhost.localdomain firewalld[708]: WARNING: AllowZoneDrifting is enabled. This is considered ...now.</span><br><span class="line">Hint: Some lines were ellipsized, use -l to show <span class="keyword">in</span> full.</span><br></pre></td></tr></table></figure>
+<p>其中 <code>Active: active (running</code>) 表示防火墙在启动中。</p>
+<h2 id="永久停掉防火墙"><a href="#永久停掉防火墙" class="headerlink" title="永久停掉防火墙"></a>永久停掉防火墙</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">systemctl disable firewalld</span><br></pre></td></tr></table></figure>
+<h1 id="更改ulimit"><a href="#更改ulimit" class="headerlink" title="更改ulimit"></a>更改ulimit</h1><p>查看ulimit</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ulimit -a</span><br></pre></td></tr></table></figure>
+<p>输出如下内容</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">core file size          (blocks, -c) 0</span><br><span class="line">data seg size           (kbytes, -d) unlimited</span><br><span class="line">scheduling priority             (-e) 0</span><br><span class="line">file size               (blocks, -f) unlimited</span><br><span class="line">pending signals                 (-i) 3804</span><br><span class="line">max locked memory       (kbytes, -l) 64</span><br><span class="line">max memory size         (kbytes, -m) unlimited</span><br><span class="line">open files                      (-n) 1024</span><br><span class="line">pipe size            (512 bytes, -p) 8</span><br><span class="line">POSIX message queues     (bytes, -q) 819200</span><br><span class="line">real-time priority              (-r) 0</span><br><span class="line">stack size              (kbytes, -s) 8192</span><br><span class="line">cpu time               (seconds, -t) unlimited</span><br><span class="line">max user processes              (-u) 3804</span><br><span class="line">virtual memory          (kbytes, -v) unlimited</span><br><span class="line">file locks                      (-x) unlimited</span><br></pre></td></tr></table></figure>
+<p>其中<code>open files</code>只有1024，需要调整，具体如下</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vi /etc/security/limits.conf</span><br></pre></td></tr></table></figure>
+<p>在最下面加入如下配置</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">*		soft	nofile	65535</span><br><span class="line">*		hard	nofile	65535</span><br></pre></td></tr></table></figure>
+<p>重新ssh连上来之后再次使用<code>ulimit -a</code>命令查看即可发现配置生效。</p>
+<h1 id="优化TCP配置"><a href="#优化TCP配置" class="headerlink" title="优化TCP配置"></a>优化TCP配置</h1><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vi /etc/sysctl.conf</span><br></pre></td></tr></table></figure>
+<p>加入如下配置</p>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 以下配置参数在 /etc/sysctl.conf 文件里，修改文件后，使用 sysctl -p 命令使配置生效</span></span><br><span class="line"><span class="comment"># 开启重用，允许将TIME_WAIT sockets重新用于新的TCP连接，默认关闭</span></span><br><span class="line"><span class="meta">net.ipv4.tcp_tw_reuse</span>=<span class="string">1</span></span><br><span class="line"><span class="comment"># 开启TCP连接中的TIME_WAIT sockets的快速回收</span></span><br><span class="line"><span class="meta">net.ipv4.tcp_tw_recycle</span>=<span class="string">1</span></span><br><span class="line"><span class="comment"># 修改系统默认的TIME_OUT时间，如果socket由本端要求关闭，这个参数决定了它保持在FIN-WAIT-2状态的时间。</span></span><br><span class="line"><span class="meta">net.ipv4.tcp_fin_timeout</span>=<span class="string">30</span></span><br><span class="line"><span class="comment"># 开启synccookies，当出现syn等待队列溢出时，启用cookies来处理，可防范少量syn攻击</span></span><br><span class="line"><span class="meta">net.ipv4.tcp_syncookies</span>=<span class="string">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 开启sack，有选择地应答乱序接收到的报文来提高性能，但会增加CPU占用</span></span><br><span class="line"><span class="meta">net.ipv4.tcp_sack</span>=<span class="string">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 开启TCP时间戳，为了实现更好的性能应该启用这个选项</span></span><br><span class="line"><span class="meta">net.ipv4.tcp_timestamps</span>=<span class="string">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 在内核放弃建立连接之前发送SYN+ACK包的数量</span></span><br><span class="line"><span class="meta">net.ipv4.tcp_synack_retries</span>=<span class="string">1</span></span><br><span class="line"><span class="comment"># 在内核放弃建立连接之前发送SYN包的数量</span></span><br><span class="line"><span class="meta">net.ipv4.tcp_syn_retries</span>=<span class="string">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 用于向外连接的端口范围，默认情况下：32768到61000，改为1024到65535。</span></span><br><span class="line"><span class="meta">net.ipv4.ip_local_port_range</span>=<span class="string">1024 65535</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 为自动调优定义每个 socket 使用的内存，对应发送缓冲区。如下参数分别表示最少32K、默认512K、最大16M</span></span><br><span class="line"><span class="meta">net.ipv4.tcp_wmem</span>=<span class="string">32768 524288 16777216</span></span><br><span class="line"><span class="comment"># 每个 socket 使用的内存默认值，对应上面参数的第二个值，配置后会覆盖上面的配置值</span></span><br><span class="line"><span class="meta">net.core.wmem_default</span>=<span class="string">2097152</span></span><br><span class="line"><span class="comment"># 每个 socket 使用的内存最大值，对应上面参数的第二个值，配置后会覆盖上面的配置值</span></span><br><span class="line"><span class="meta">net.core.wmem_max</span>=<span class="string">16777216</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 为自动调优所使用的接收缓冲区的值，对应接收缓冲区。配置与tcp_wmem类似</span></span><br><span class="line"><span class="meta">net.ipv4.tcp_rmem</span>=<span class="string">32768 524288 16777216</span></span><br><span class="line"><span class="meta">net.core.wmem_default</span>=<span class="string">262144</span></span><br><span class="line"><span class="meta">net.core.wmem_max</span>=<span class="string">16777216</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># socket监听的backlog(监听队列)上限</span></span><br><span class="line"><span class="meta">net.core.somaxconn</span>=<span class="string">65535</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 在 TIME_WAIT 数量等于 tcp_max_tw_buckets 时，不会有新的 TIME_WAIT 产生，网关、nginx类应用建议配置</span></span><br><span class="line"><span class="meta">net.ipv4.tcp_max_tw_buckets</span>=<span class="string">5000</span></span><br><span class="line"><span class="comment"># SYN队列长度，默认1024，可以容纳更多等待连接的网络连接数</span></span><br><span class="line"><span class="meta">net.ipv4.tcp_max_syn_backlog</span>=<span class="string">8192</span></span><br><span class="line"><span class="comment"># 网络设备接收数据包的速率比内核处理这些包的速率快时，允许送到队列的数据包的最大数目</span></span><br><span class="line"><span class="meta">net.core.netdev_max_backlog</span>=<span class="string">262144</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 下面的参数酌情配置，建议不配置</span></span><br><span class="line"><span class="comment"># 关闭自动调整窗口大小，默认开启，可以不用单独配置，</span></span><br><span class="line"><span class="meta">net.ipv4.tcp_window_scaling</span>=<span class="string">1</span></span><br><span class="line"><span class="comment"># 禁止Tcp空闲后慢启动</span></span><br><span class="line"><span class="meta">net.ipv4.tcp_slow_start_after_idle</span>=<span class="string">0</span></span><br></pre></td></tr></table></figure>
+<p>执行如下命令使生效</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sysctl -p</span><br></pre></td></tr></table></figure>
+<p>正常情况下会输出配置的内容。</p>
+<h1 id="固定IP"><a href="#固定IP" class="headerlink" title="固定IP"></a>固定IP</h1><p>先看当前系统自动分配的IP</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ipconfig</span><br></pre></td></tr></table></figure>
+<p>输出如下内容</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ens33: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500</span><br><span class="line">        inet 192.168.237.134  netmask 255.255.255.0  broadcast 192.168.237.255</span><br><span class="line">        inet6 fe80::64c1:a75c:c6e3:6caf  prefixlen 64  scopeid 0x20&lt;link&gt;</span><br><span class="line">        ether 00:0c:29:66:6f:03  txqueuelen 1000  (Ethernet)</span><br><span class="line">        RX packets 85  bytes 10377 (10.1 KiB)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 85  bytes 9993 (9.7 KiB)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br><span class="line"></span><br><span class="line">lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536</span><br><span class="line">        inet 127.0.0.1  netmask 255.0.0.0</span><br><span class="line">        inet6 ::1  prefixlen 128  scopeid 0x10&lt;host&gt;</span><br><span class="line">        loop  txqueuelen 1000  (Local Loopback)</span><br><span class="line">        RX packets 68  bytes 5792 (5.6 KiB)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 68  bytes 5792 (5.6 KiB)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br></pre></td></tr></table></figure>
+<p>其中<code>ens33</code>表示网卡名称，当前自动分配的IP为<code>192.168.237.134</code>。</p>
+<p>编辑网络配置：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vi /etc/sysconfig/network-scripts/ifcfg-ens33</span><br></pre></td></tr></table></figure>
+<p>修改<code>BOOTPROTO</code>为<code>static</code>，增加<code>IPADDR</code>、<code>GATEWAY</code>、<code>NETMASK</code>配置，分别表示IP、网关、子网掩码，其中网关需要看本机安装的VMWare软件的配置，如下所示：</p>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">BOOTPROTO</span>=<span class="string">"static"</span></span><br><span class="line"></span><br><span class="line"><span class="attr">IPADDR</span>=<span class="string">"192.168.237.134"</span></span><br><span class="line"><span class="attr">GATEWAY</span>=<span class="string">"192.168.237.2"</span></span><br><span class="line"><span class="attr">NETMASK</span>=<span class="string">"255.255.255.0"</span></span><br></pre></td></tr></table></figure>
+<p>重启网络</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">service network restart</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>运维</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>oracle-sql-高级编程版笔记1</title>
+    <url>/2024/01/11/oracle-sql-1/</url>
+    <content><![CDATA[<h1 id="SQL核心"><a href="#SQL核心" class="headerlink" title="SQL核心"></a>SQL核心</h1><h2 id="5个核心SQL语句"><a href="#5个核心SQL语句" class="headerlink" title="5个核心SQL语句"></a>5个核心SQL语句</h2><h3 id="SELECT"><a href="#SELECT" class="headerlink" title="SELECT"></a>SELECT</h3><p>用来从一个或多个表中或者其他数据库对象中提取数据。</p>
+<p>示例以及逻辑处理顺序</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">5    <span class="keyword">SELECT</span> &lt;<span class="keyword">column</span> <span class="keyword">list</span>&gt;</span><br><span class="line"><span class="number">1</span>    <span class="keyword">FROM</span> &lt;<span class="keyword">source</span> <span class="keyword">object</span> <span class="keyword">list</span>&gt;</span><br><span class="line"><span class="number">1.1</span>  <span class="keyword">FROM</span> &lt;<span class="keyword">left</span> <span class="keyword">source</span> <span class="keyword">object</span>&gt; &lt;<span class="keyword">join</span> <span class="keyword">type</span>&gt;</span><br><span class="line">         <span class="keyword">JOIN</span> &lt;<span class="keyword">right</span> <span class="keyword">source</span> <span class="keyword">object</span>&gt; <span class="keyword">ON</span> &lt;<span class="keyword">on</span> predicates&gt;</span><br><span class="line"><span class="number">2</span>    <span class="keyword">WHERE</span> &lt;<span class="keyword">where</span> predicates&gt;</span><br><span class="line"><span class="number">3</span>    <span class="keyword">GROUP</span> <span class="keyword">BY</span> &lt;<span class="keyword">group</span> <span class="keyword">by</span> expression(s)&gt;</span><br><span class="line"><span class="number">4</span>    <span class="keyword">HAVING</span> &lt;<span class="keyword">having</span> predicates&gt;</span><br><span class="line"><span class="number">6</span>    <span class="keyword">ORDER</span> <span class="keyword">BY</span> &lt;<span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">list</span>&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="FROM"><a href="#FROM" class="headerlink" title="FROM"></a>FROM</h4><p>列出所查询数据的源对象，包含表、视图、物化视图、分区或子分区，或者建立一个子查询。</p>
+<p>如果使用多个源对象，其逻辑处理阶段也将会应用到每一个联结类型以及谓词ON，处理联结语句的时候按下面的顺序进行：</p>
+<ol>
+<li>交叉联结，也称笛卡尔乘积；</li>
+<li>内联结；</li>
+<li>外联结。</li>
+</ol>
+<h4 id="WHERE"><a href="#WHERE" class="headerlink" title="WHERE"></a>WHERE</h4><p>按照条件来限制查询最终返回集的行数。</p>
+<h4 id="GROUP-BY"><a href="#GROUP-BY" class="headerlink" title="GROUP BY"></a>GROUP BY</h4><p>将执行FROM和WHERE子句后得到的经过筛选后的结果集进行聚合。</p>
+<h4 id="HAVING"><a href="#HAVING" class="headerlink" title="HAVING"></a>HAVING</h4><p>将分组汇总后的查询结果限定为只有该子句中的条件为真的数据行。</p>
+<h4 id="SELECT-1"><a href="#SELECT-1" class="headerlink" title="SELECT"></a>SELECT</h4><p>列出查询的返回最终结果集中需要显示哪些列。可以是一个实际的列、一个表达式，活着一个SELECT语句的结果。</p>
+<h4 id="ORDER-BY"><a href="#ORDER-BY" class="headerlink" title="ORDER BY"></a>ORDER BY</h4><p>用于对查询最终返回的结果集进行排序</p>
+<h3 id="INSERT"><a href="#INSERT" class="headerlink" title="INSERT"></a>INSERT</h3><p>用来向表、分区或者试图中添加行。可以向单表或者多个表方法中添加数据行。</p>
+<h4 id="单表插入"><a href="#单表插入" class="headerlink" title="单表插入"></a>单表插入</h4><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> &lt;table_name&gt; </span><br><span class="line">(&lt;<span class="keyword">columns</span>&gt;) </span><br><span class="line"><span class="keyword">VALUES</span></span><br><span class="line">(&lt;<span class="keyword">column</span> <span class="keyword">values</span>&gt;)</span><br></pre></td></tr></table></figure>
+<h4 id="多表插入"><a href="#多表插入" class="headerlink" title="多表插入"></a>多表插入</h4><blockquote>
+<p>略</p>
+</blockquote>
+<h3 id="UPDATE"><a href="#UPDATE" class="headerlink" title="UPDATE"></a>UPDATE</h3><p>改变表中原有行的列值。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> &lt;table_name&gt; </span><br><span class="line"><span class="keyword">SET</span>	&lt;<span class="keyword">column</span>&gt;=&lt;<span class="keyword">value</span>&gt; </span><br><span class="line"><span class="keyword">WHERE</span> &lt;<span class="keyword">where</span> predicates&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="DELETE"><a href="#DELETE" class="headerlink" title="DELETE"></a>DELETE</h3><p>用来从表中移除数据行。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> &lt;table_name&gt; </span><br><span class="line"><span class="keyword">WHERE</span> &lt;<span class="keyword">where</span> predicates&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="MERGE"><a href="#MERGE" class="headerlink" title="MERGE"></a>MERGE</h3><p>具有按条件获取要更新或插入到表中的数据行，然后从1个或者多个源头对表进行更新或者向表中插入行两方面的能力。</p>
+<p>用在数据仓库中来移动大量的数据。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">MERGE</span> &lt;hint&gt;</span><br><span class="line"><span class="keyword">INTO</span> &lt;table_name&gt;</span><br><span class="line"><span class="keyword">USING</span> &lt;table_or_query&gt;</span><br><span class="line"><span class="keyword">ON</span> (&lt;condition&gt;)</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">MATCHED</span> <span class="keyword">THEN</span> &lt;update_clause&gt;</span><br><span class="line"><span class="keyword">DELETE</span> &lt;where_clause&gt;</span><br><span class="line"><span class="keyword">WHEN</span> <span class="keyword">NOT</span> <span class="keyword">MATCHED</span> <span class="keyword">THEN</span> &lt;insert_clause&gt;</span><br><span class="line">[<span class="keyword">LoG</span> <span class="keyword">ERRORS</span> &lt;log_errors_clause&gt; &lt;<span class="keyword">reject</span> <span class="keyword">limit</span> &lt;<span class="built_in">integer</span> | <span class="keyword">unlimited</span>&gt;&gt;]</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>编程</tag>
+        <tag>数据库</tag>
+        <tag>oracle</tag>
+        <tag>sql</tag>
+        <tag>技术书</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python语言入门知识大纲(deepseek生成)</title>
+    <url>/2025/02/17/pythonlearn1/</url>
+    <content><![CDATA[<h3 id="1-Python基础"><a href="#1-Python基础" class="headerlink" title="1. Python基础"></a>1. Python基础</h3><h4 id="1-1-变量和数据类型"><a href="#1-1-变量和数据类型" class="headerlink" title="1.1 变量和数据类型"></a>1.1 变量和数据类型</h4><p><strong>变量：</strong><br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 整数</span></span><br><span class="line">a = <span class="number">5</span></span><br><span class="line">print(type(a))  <span class="comment"># &lt;class 'int'&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 浮点数</span></span><br><span class="line">b = <span class="number">3.14</span></span><br><span class="line">print(type(b))  <span class="comment"># &lt;class 'float'&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 字符串</span></span><br><span class="line">c = <span class="string">"Hello, World!"</span></span><br><span class="line">print(type(c))  <span class="comment"># &lt;class 'str'&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>注释：</strong><br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 这是单行注释</span></span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">这是多行注释</span></span><br><span class="line"><span class="string">可以跨越多行</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="1-2-运算符"><a href="#1-2-运算符" class="headerlink" title="1.2 运算符"></a>1.2 运算符</h4><p><strong>算术运算符：</strong><br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">5</span></span><br><span class="line">b = <span class="number">3</span></span><br><span class="line">print(a + b)  <span class="comment"># 加法: 8</span></span><br><span class="line">print(a - b)  <span class="comment"># 减法: 2</span></span><br><span class="line">print(a * b)  <span class="comment"># 乘法: 15</span></span><br><span class="line">print(a / b)  <span class="comment"># 除法: 1.6666666666666667</span></span><br><span class="line">print(a // b)  <span class="comment"># 整数除法: 1</span></span><br><span class="line">print(a % b)  <span class="comment"># 取模: 2</span></span><br><span class="line">print(a ** b)  <span class="comment"># 幂运算: 125</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>比较运算符：</strong><br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">5</span></span><br><span class="line">b = <span class="number">3</span></span><br><span class="line">print(a == b)  <span class="comment"># False</span></span><br><span class="line">print(a != b)  <span class="comment"># True</span></span><br><span class="line">print(a &gt; b)   <span class="comment"># True</span></span><br><span class="line">print(a &lt; b)   <span class="comment"># False</span></span><br><span class="line">print(a &gt;= b)  <span class="comment"># True</span></span><br><span class="line">print(a &lt;= b)  <span class="comment"># False</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>逻辑运算符：</strong><br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="literal">True</span></span><br><span class="line">b = <span class="literal">False</span></span><br><span class="line">print(a <span class="keyword">and</span> b)  <span class="comment"># False</span></span><br><span class="line">print(a <span class="keyword">or</span> b)   <span class="comment"># True</span></span><br><span class="line">print(<span class="keyword">not</span> a)    <span class="comment"># False</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="2-控制结构"><a href="#2-控制结构" class="headerlink" title="2. 控制结构"></a>2. 控制结构</h3><h4 id="2-1-if语句"><a href="#2-1-if语句" class="headerlink" title="2.1 if语句"></a>2.1 if语句</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x = <span class="number">10</span></span><br><span class="line"><span class="keyword">if</span> x &gt; <span class="number">5</span>:</span><br><span class="line">    print(<span class="string">"x is greater than 5"</span>)</span><br><span class="line"><span class="keyword">elif</span> x == <span class="number">5</span>:</span><br><span class="line">    print(<span class="string">"x is equal to 5"</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">"x is less than 5"</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="2-2-for循环"><a href="#2-2-for循环" class="headerlink" title="2.2 for循环"></a>2.2 for循环</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">    print(i)  <span class="comment"># 输出: 0, 1, 2, 3, 4</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-3-while循环"><a href="#2-3-while循环" class="headerlink" title="2.3 while循环"></a>2.3 while循环</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">i = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> i &lt; <span class="number">5</span>:</span><br><span class="line">    print(i)  <span class="comment"># 输出: 0, 1, 2, 3, 4</span></span><br><span class="line">    i += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-函数"><a href="#3-函数" class="headerlink" title="3. 函数"></a>3. 函数</h3><p><strong>定义和调用函数：</strong><br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">greet</span><span class="params">(name)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">"Hello, "</span> + name</span><br><span class="line"></span><br><span class="line">print(greet(<span class="string">"Alice"</span>))  <span class="comment"># 输出: Hello, Alice</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>带默认参数的函数：</strong><br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">greet</span><span class="params">(name=<span class="string">"World"</span>)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">"Hello, "</span> + name</span><br><span class="line"></span><br><span class="line">print(greet())       <span class="comment"># 输出: Hello, World</span></span><br><span class="line">print(greet(<span class="string">"Bob"</span>))  <span class="comment"># 输出: Hello, Bob</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="4-数据结构"><a href="#4-数据结构" class="headerlink" title="4. 数据结构"></a>4. 数据结构</h3><h4 id="4-1-列表"><a href="#4-1-列表" class="headerlink" title="4.1 列表"></a>4.1 列表</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 创建一个列表</span></span><br><span class="line">my_list = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">print(my_list)  <span class="comment"># 输出: [1, 2, 3, 4, 5]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 访问元素</span></span><br><span class="line">print(my_list[<span class="number">0</span>])  <span class="comment"># 输出: 1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改元素</span></span><br><span class="line">my_list[<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line">print(my_list)  <span class="comment"># 输出: [0, 2, 3, 4, 5]</span></span><br></pre></td></tr></table></figure>
+<h4 id="4-2-元组"><a href="#4-2-元组" class="headerlink" title="4.2 元组"></a>4.2 元组</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 创建一个元组</span></span><br><span class="line">my_tuple = (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>)</span><br><span class="line">print(my_tuple)  <span class="comment"># 输出: (1, 2, 3, 4, 5)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 访问元素</span></span><br><span class="line">print(my_tuple[<span class="number">0</span>])  <span class="comment"># 输出: 1</span></span><br></pre></td></tr></table></figure>
+<h4 id="4-3-字典"><a href="#4-3-字典" class="headerlink" title="4.3 字典"></a>4.3 字典</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 创建一个字典</span></span><br><span class="line">my_dict = &#123;<span class="string">"a"</span>: <span class="number">1</span>, <span class="string">"b"</span>: <span class="number">2</span>, <span class="string">"c"</span>: <span class="number">3</span>&#125;</span><br><span class="line">print(my_dict)  <span class="comment"># 输出: &#123;'a': 1, 'b': 2, 'c': 3&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 访问元素</span></span><br><span class="line">print(my_dict[<span class="string">"a"</span>])  <span class="comment"># 输出: 1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改元素</span></span><br><span class="line">my_dict[<span class="string">"a"</span>] = <span class="number">0</span></span><br><span class="line">print(my_dict)  <span class="comment"># 输出: &#123;'a': 0, 'b': 2, 'c': 3&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="5-文件操作"><a href="#5-文件操作" class="headerlink" title="5. 文件操作"></a>5. 文件操作</h3><p><strong>读取文件：</strong><br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> open(<span class="string">"example.txt"</span>, <span class="string">"r"</span>) <span class="keyword">as</span> file:</span><br><span class="line">    content = file.read()</span><br><span class="line">    print(content)</span><br></pre></td></tr></table></figure></p>
+<p><strong>写入文件：</strong><br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> open(<span class="string">"example.txt"</span>, <span class="string">"w"</span>) <span class="keyword">as</span> file:</span><br><span class="line">    file.write(<span class="string">"Hello, World!"</span>)</span><br></pre></td></tr></table></figure></p>
+<h3 id="6-异常处理"><a href="#6-异常处理" class="headerlink" title="6. 异常处理"></a>6. 异常处理</h3><p><strong>try-except语句：</strong><br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    x = <span class="number">1</span> / <span class="number">0</span></span><br><span class="line"><span class="keyword">except</span> ZeroDivisionError:</span><br><span class="line">    print(<span class="string">"You can't divide by zero!"</span>)</span><br></pre></td></tr></table></figure></p>
+<h3 id="7-面向对象编程"><a href="#7-面向对象编程" class="headerlink" title="7. 面向对象编程"></a>7. 面向对象编程</h3><h4 id="7-1-类的定义和实例化"><a href="#7-1-类的定义和实例化" class="headerlink" title="7.1 类的定义和实例化"></a>7.1 类的定义和实例化</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name)</span>:</span></span><br><span class="line">        self.name = name</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">bark</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.name + <span class="string">" says woof!"</span></span><br><span class="line"></span><br><span class="line">my_dog = Dog(<span class="string">"Buddy"</span>)</span><br><span class="line">print(my_dog.bark())  <span class="comment"># 输出: Buddy says woof!</span></span><br></pre></td></tr></table></figure>
+<h4 id="7-2-继承"><a href="#7-2-继承" class="headerlink" title="7.2 继承"></a>7.2 继承</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name)</span>:</span></span><br><span class="line">        self.name = name</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">speak</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span><span class="params">(Animal)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">speak</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.name + <span class="string">" says woof!"</span></span><br><span class="line"></span><br><span class="line">my_dog = Dog(<span class="string">"Buddy"</span>)</span><br><span class="line">print(my_dog.speak())  <span class="comment"># 输出: Buddy says woof!</span></span><br></pre></td></tr></table></figure>
+<h3 id="8-模块和包"><a href="#8-模块和包" class="headerlink" title="8. 模块和包"></a>8. 模块和包</h3><p><strong>导入模块：</strong><br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"></span><br><span class="line">print(math.sqrt(<span class="number">16</span>))  <span class="comment"># 输出: 4.0</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>自定义模块：</strong><br>创建一个名为 <code>mymodule.py</code> 的文件：<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># mymodule.py</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(a, b)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> a + b</span><br></pre></td></tr></table></figure></p>
+<p>在另一个文件中使用：<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> mymodule</span><br><span class="line"></span><br><span class="line">print(mymodule.add(<span class="number">2</span>, <span class="number">3</span>))  <span class="comment"># 输出: 5</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="9-高级特性"><a href="#9-高级特性" class="headerlink" title="9. 高级特性"></a>9. 高级特性</h3><h4 id="9-1-列表推导式"><a href="#9-1-列表推导式" class="headerlink" title="9.1 列表推导式"></a>9.1 列表推导式</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">squares = [x**<span class="number">2</span> <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>)]</span><br><span class="line">print(squares)  <span class="comment"># 输出: [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]</span></span><br></pre></td></tr></table></figure>
+<h4 id="9-2-生成器表达式"><a href="#9-2-生成器表达式" class="headerlink" title="9.2 生成器表达式"></a>9.2 生成器表达式</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">gen = (x**<span class="number">2</span> <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>))</span><br><span class="line"><span class="keyword">for</span> val <span class="keyword">in</span> gen:</span><br><span class="line">    print(val)  <span class="comment"># 输出: 0, 1, 4, 9, 16, 25, 36, 49, 64, 81</span></span><br></pre></td></tr></table></figure>
+<h3 id="10-常用库和工具"><a href="#10-常用库和工具" class="headerlink" title="10. 常用库和工具"></a>10. 常用库和工具</h3><h4 id="10-1-sys模块"><a href="#10-1-sys模块" class="headerlink" title="10.1 sys模块"></a>10.1 <code>sys</code>模块</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">print(sys.version)  <span class="comment"># 输出Python版本信息</span></span><br></pre></td></tr></table></figure>
+<h4 id="10-2-os模块"><a href="#10-2-os模块" class="headerlink" title="10.2 os模块"></a>10.2 <code>os</code>模块</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">print(os.getcwd())  <span class="comment"># 输出当前工作目录</span></span><br></pre></td></tr></table></figure>
+<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>以上是一份详细的Python基础知识清单，涵盖了变量、数据类型、控制结构、函数、数据结构、文件操作、异常处理、面向对象编程等多个方面。希望这份清单能帮助你系统地学习Python基础知识。</p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>学习</tag>
+        <tag>deepseek</tag>
+      </tags>
+  </entry>
+</search>
