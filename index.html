@@ -1,181 +1,161 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>生一鸣 - 简历简述</title>
-    <link rel="stylesheet" href="style-summary.css">
+    <title>生一鸣 - 简历概览</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- 背景效果 -->
-    <div class="bg-grid"></div>
-    <div class="bg-gradient"></div>
-    
-    <!-- 主容器 -->
     <div class="container">
-        <!-- 头部 -->
         <header class="header">
-            <div class="header-content">
-                <h1 class="name">生一鸣</h1>
-                <p class="title">Java开发工程师/架构师</p>
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <span class="icon">📱</span>
-                        <span>19805120514</span>
-                    </div>
-                    <div class="contact-item">
-                        <span class="icon">📧</span>
-                        <span>yeeminshon@outlook.com</span>
-                    </div>
-                    <div class="contact-item">
-                        <span class="icon">📍</span>
-                        <span>江苏</span>
-                    </div>
-                </div>
-            </div>
+            <div class="glow-effect"></div>
+            <h1 class="title">生一鸣</h1>
+            <p class="subtitle">Java开发工程师 / 架构师 / AI工程师</p>
+            <div class="scan-line"></div>
         </header>
-        
-        <!-- 核心信息 -->
-        <section class="core-info">
-            <div class="info-card">
-                <h2 class="card-title">个人简介</h2>
-                <p class="card-content">
-                    计算机科学与技术专业，拥有10年软件开发经验，专注于Java后端开发和系统架构设计。
-                    曾主导交管12123APP后台系统的开发和维护，负责从传统架构向微服务架构的升级改造，
-                    支撑5.9亿用户量、日活2800万的交管12123APP后台服务。
-                    具有丰富的分布式系统设计和大数据处理经验，熟悉各种主流中间件和云服务，
-                    擅长高并发、高可用系统的设计与实现。
-                    2025年初开始研究大模型应用开发和模型微调技术，
-                    并将其应用于交管小安智能客服模块，取得显著成效。
-                </p>
+
+        <main class="main-content">
+            <section class="summary-card">
+                <div class="card-header">
+                    <i class="fas fa-user-astronaut"></i>
+                    <h2>个人概况</h2>
+                </div>
+                <div class="card-content">
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label"><i class="fas fa-birthday-cake"></i> 生日</span>
+                            <span class="info-value">1993-11-01</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label"><i class="fas fa-map-marker-alt"></i> 籍贯</span>
+                            <span class="info-value">江苏</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label"><i class="fas fa-graduation-cap"></i> 学历</span>
+                            <span class="info-value">大学本科</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label"><i class="fas fa-university"></i> 毕业学校</span>
+                            <span class="info-value">上海第二工业大学</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label"><i class="fas fa-briefcase"></i> 当前职位</span>
+                            <span class="info-value">开发工程师 / AI工程师</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label"><i class="fas fa-building"></i> 当前单位</span>
+                            <span class="info-value">公安部交通管理科学研究所</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="summary-card">
+                <div class="card-header">
+                    <i class="fas fa-rocket"></i>
+                    <h2>职业轨迹</h2>
+                </div>
+                <div class="card-content">
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">2015.07 - 2016.08</div>
+                            <div class="timeline-content">
+                                <h3>圆通速递有限公司</h3>
+                                <p>实习、开发工程师</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">2016.09 - 2017.01</div>
+                            <div class="timeline-content">
+                                <h3>上海跨境电子商务公共服务有限公司</h3>
+                                <p>开发工程师</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">2017.02 - 2018.02</div>
+                            <div class="timeline-content">
+                                <h3>上海卫诚企业征信有限公司</h3>
+                                <p>开发工程师 (团队负责人)</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">2018.03 - 至今</div>
+                            <div class="timeline-content">
+                                <h3>公安部交通管理科学研究所</h3>
+                                <p>开发工程师 / 架构师</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="summary-card">
+                <div class="card-header">
+                    <i class="fas fa-cogs"></i>
+                    <h2>核心技能</h2>
+                </div>
+                <div class="card-content">
+                    <div class="skills">
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">Spring Cloud</span>
+                        <span class="skill-tag">Apache Dubbo</span>
+                        <span class="skill-tag">微服务架构</span>
+                        <span class="skill-tag">Redis</span>
+                        <span class="skill-tag">Kafka</span>
+                        <span class="skill-tag">ElasticSearch</span>
+                        <span class="skill-tag">RabbitMQ</span>
+                        <span class="skill-tag">亿级系统设计</span>
+                        <span class="skill-tag">大模型应用开发</span>
+                        <span class="skill-tag">高并发系统</span>
+                        <span class="skill-tag">分布式系统</span>
+                        <span class="skill-tag">RAG系统设计</span>
+                        <span class="skill-tag">系统架构设计</span>
+                        <span class="skill-tag">数据结构与算法</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="summary-card highlight">
+                <div class="card-header">
+                    <i class="fas fa-star"></i>
+                    <h2>关键成就</h2>
+                </div>
+                <div class="card-content">
+                    <ul class="achievements">
+                        <li>总体负责交管12123 APP后台系统（5.9亿用户，日活2800万）</li>
+                        <li>主导系统微服务架构改造，设计底层公共模块和组件</li>
+                        <li>设计开发亿级消息推送系统，日均2千万消息</li>
+                        <li>开发用户登录系统，支撑日均4千万登录人次</li>
+                        <li>基于大模型开发交管小安智能问答服务</li>
+                        <li>公安交管省部传输、专网交换、内外网交换服务</li>
+                    </ul>
+                </div>
+            </section>
+
+            <div class="action-buttons">
+                <a href="resume.html" class="btn btn-primary">
+                    <i class="fas fa-file-alt"></i> 查看完整简历
+                </a>
+                <a href="tel:19805120514" class="btn btn-secondary">
+                    <i class="fas fa-phone"></i> 联系我
+                </a>
+                <a href="mailto:yeeminshon@outlook.com" class="btn btn-secondary">
+                    <i class="fas fa-envelope"></i> 发送邮件
+                </a>
             </div>
-            
-            <div class="info-card">
-                <h2 class="card-title">工作经历</h2>
-                <div class="experience-item">
-                    <h3 class="company">公安部交通管理科学研究所</h3>
-                    <span class="period">2018.03 – 至今</span>
-                    <p class="description">负责交管12123APP后台系统的开发和维护，主导技术架构升级，设计并实现消息推送、用户登录等核心系统。</p>
-                </div>
-                <div class="experience-item">
-                    <h3 class="company">上海卫诚企业征信有限公司</h3>
-                    <span class="period">2017.02 – 2018.02</span>
-                    <p class="description">带领5人团队开发智慧园区项目和公司内部系统，制定技术路线和架构设计。</p>
-                </div>
-                <div class="experience-item">
-                    <p class="description">...</p>
-                </div>
-            </div>
-            
-            <div class="info-card">
-                <h2 class="card-title">项目亮点</h2>
-                <div class="project-item">
-                    <h3 class="project-title">交管12123 - 消息推送系统</h3>
-                    <p class="description">基于Spring Cloud架构，使用Kafka消息队列，支撑日均2千万、峰值过亿的消息量，违停告知消息秒级送达。</p>
-                </div>
-                <div class="project-item">
-                    <h3 class="project-title">公安交管信息传输交换服务</h3>
-                    <p class="description">基于springcloud技术栈，深入使用RabbitMQ消息队列，支撑日均1.2亿、峰值1.8亿级数据汇聚。</p>
-                </div>
-            </div>
-            
-            <div class="info-card">
-                <h2 class="card-title">专业优势</h2>
-                <ul class="advantages-list">
-                    <li class="advantage-item">
-                        <span class="advantage-icon">⚡</span>
-                        <span>系统架构设计</span>
-                    </li>
-                    <li class="advantage-item">
-                        <span class="advantage-icon">🔄</span>
-                        <span>微服务架构</span>
-                    </li>
-                    <li class="advantage-item">
-                        <span class="advantage-icon">🌐</span>
-                        <span>分布式系统</span>
-                    </li>
-                    <li class="advantage-item">
-                        <span class="advantage-icon">🚀</span>
-                        <span>高并发处理</span>
-                    </li>
-                    <li class="advantage-item">
-                        <span class="advantage-icon">🤖</span>
-                        <span>大模型应用</span>
-                    </li>
-                    <li class="advantage-item">
-                        <span class="advantage-icon">👥</span>
-                        <span>团队管理</span>
-                    </li>
-                    <li class="advantage-item">
-                        <span class="advantage-icon">📊</span>
-                        <span>大数据处理</span>
-                    </li>
-                    <li class="advantage-item">
-                        <span class="advantage-icon">⚙️</span>
-                        <span>性能优化</span>
-                    </li>
-                    <li class="advantage-item">
-                        <span class="advantage-icon">🔒</span>
-                        <span>系统安全</span>
-                    </li>
-                    <li class="advantage-item">
-                        <span class="advantage-icon">📋</span>
-                        <span>技术方案设计</span>
-                    </li>
-                </ul>
-            </div>
-            
-            <div class="info-card">
-                <h2 class="card-title">技术栈</h2>
-                <div class="skills-container">
-                    <div class="skill-tag">Java</div>
-                    <div class="skill-tag">Spring Boot</div>
-                    <div class="skill-tag">Spring Cloud</div>
-                    <div class="skill-tag">Apache Dubbo</div>
-                    <div class="skill-tag">Redis</div>
-                    <div class="skill-tag">Kafka</div>
-                    <div class="skill-tag">RabbitMQ</div>
-                    <div class="skill-tag">ElasticSearch</div>
-                    <div class="skill-tag">MySQL</div>
-                    <div class="skill-tag">Oracle</div>
-                    <div class="skill-tag">大模型应用研发</div>
-                    <div class="skill-tag">智能体</div>
-                    <div class="skill-tag">RAG系统</div>
-                    <div class="skill-tag">模型微调</div>
-                </div>
-            </div>
-            
-            <div class="info-card">
-                <h2 class="card-title">个人成就</h2>
-                <div class="experience-item">
-                    <h3 class="company">技术创新</h3>
-                    <p class="description">自研基于密码本的黑盒算法提升接口安全性，支撑日均4千万级用户登录和亿级接口访问量。</p>
-                </div>
-                <div class="experience-item">
-                    <h3 class="company">系统优化</h3>
-                    <p class="description">主导交管12123APP从传统架构向微服务架构升级，提升系统稳定性和性能。</p>
-                </div>
-                <div class="experience-item">
-                    <h3 class="company">团队建设</h3>
-                    <p class="description">带领5人开发团队完成智慧园区项目，制定技术路线和架构设计，培养团队成员技术能力。</p>
-                </div>
-            </div>
-        </section>
-        
-        <!-- 查看详情按钮 -->
-        <div class="cta-section">
-            <a href="details.html" class="cta-button">查看详细简历</a>
-        </div>
-        
-        <!-- 页脚 -->
+        </main>
+
         <footer class="footer">
-            <div class="footer-content">
-                <p>© 2026 生一鸣 - 个人简历</p>
-                <p>科技风格简历简述</p>
-            </div>
+            <p>© 2025 生一鸣 · 科幻风格简历</p>
+            <p class="footer-note">数据驱动 · 未来已来</p>
         </footer>
     </div>
-    
-    <script src="script-summary.js"></script>
+
+    <script src="script.js"></script>
 </body>
 </html>
