@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>photos — Sheng Yiming</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="terminal">
+    <div class="terminal-header">
+      <div class="win-buttons">
+        <span class="win-btn close"></span>
+        <span class="win-btn min"></span>
+        <span class="win-btn max"></span>
+      </div>
+      <span class="terminal-title">yeeminshon@portal — ~/photos — ls -la *.jpg</span>
+    </div>
+
+    <div class="terminal-body">
+      <!-- Back -->
+      <a href="index.html" class="back-link">← cd ~/ 返回首页</a>
+
+      <!-- Demo Banner -->
+      <div style="border:1px solid var(--orange); border-left:3px solid var(--orange); border-radius:4px; padding:8px 14px; margin-bottom:1rem; background:rgba(210,153,29,0.06);">
+        <p style="color:var(--orange); font-size:0.85em; margin:0;">
+          ⚠ DEMO — 当前页面为演示内容，图片为占位图，真实数据待补充完善。
+        </p>
+      </div>
+
+      <!-- Header -->
+      <p><span class="prompt">❯</span> <span style="color:var(--orange);">ls</span> -lah ~/photos/</p>
+      <p style="color:var(--text-dim); margin-bottom:1rem;">
+        total 24K<br>
+        drwxr-xr-x  8 sym  staff  256B  May 11 23:00 <span style="color:var(--blue);">.</span><br>
+        drwxr-xr-x  6 sym  staff  192B  May 11 23:00 <span style="color:var(--blue);">..</span>
+      </p>
+
+      <hr class="divider">
+
+      <p><span class="prompt">❯</span> <span style="color:var(--purple);">feh</span> --slideshow-delay 3 *.jpg</p>
+      <p style="color:var(--text-dim); font-size:0.8rem; margin-bottom:1rem;">
+        // 图片展示 — 点击图片查看原图占位
+      </p>
+
+      <!-- Photo Grid -->
+      <div class="photo-grid">
+        <div class="photo-card">
+          <div class="photo-img" style="background:linear-gradient(135deg, #0c3483 0%, #a2b6df 100%); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.6); font-size:3rem;">
+            🏔️
+          </div>
+          <div class="photo-caption">
+            <span style="color:var(--text-muted);">2025-10-03</span> 黄山 · 云海日出
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <div class="photo-img" style="background:linear-gradient(135deg, #134e5e 0%, #71b280 100%); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.6); font-size:3rem;">
+            🌊
+          </div>
+          <div class="photo-caption">
+            <span style="color:var(--text-muted);">2025-08-15</span> 三亚 · 海棠湾
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <div class="photo-img" style="background:linear-gradient(135deg, #4a0e4e 0%, #c471ed 100%); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.6); font-size:3rem;">
+            🏙️
+          </div>
+          <div class="photo-caption">
+            <span style="color:var(--text-muted);">2025-06-20</span> 上海 · 陆家嘴夜景
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <div class="photo-img" style="background:linear-gradient(135deg, #1a1a2e 0%, #e94560 100%); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.6); font-size:3rem;">
+            🎤
+          </div>
+          <div class="photo-caption">
+            <span style="color:var(--text-muted);">2025-04-12</span> GopherCon 2025 · 演讲
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <div class="photo-img" style="background:linear-gradient(135deg, #0f2027 0%, #2c5364 100%); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.6); font-size:3rem;">
+            🏕️
+          </div>
+          <div class="photo-caption">
+            <span style="color:var(--text-muted);">2024-09-08</span> 京郊 · 露营
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <div class="photo-img" style="background:linear-gradient(135deg, #3a1c71 0%, #d76d77 100%); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.6); font-size:3rem;">
+            🚴
+          </div>
+          <div class="photo-caption">
+            <span style="color:var(--text-muted);">2024-05-17</span> 环洱海骑行
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <div class="photo-img" style="background:linear-gradient(135deg, #000000 0%, #434343 100%); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.6); font-size:3rem;">
+            ☕
+          </div>
+          <div class="photo-caption">
+            <span style="color:var(--text-muted);">2024-03-25</span> 鼓楼 · 胡同咖啡馆
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <div class="photo-img" style="background:linear-gradient(135deg, #f7971e 0%, #ffd200 100%); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.6); font-size:3rem;">
+            🎂
+          </div>
+          <div class="photo-caption">
+            <span style="color:var(--text-muted);">2024-01-15</span> 生日聚会
+          </div>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <p style="color:var(--text-dim); font-size:0.8rem;">
+        // 将 .jpg 图片放入 photos/ 目录即可替换占位图<br>
+        // 图片尺寸建议: 800x600 或 4:3 比例
+      </p>
+
+      <!-- Footer -->
+      <div class="terminal-footer">
+        <span class="prompt">❯</span> <span style="color:var(--text-muted);">8 files found · 按 <a href="index.html">cd ~</a> 返回首页</span>
+        <span class="cursor"></span>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

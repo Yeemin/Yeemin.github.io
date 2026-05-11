@@ -1,0 +1,559 @@
+/* ========================================
+   Terminal Theme — Claude Code Inspired
+   ======================================== */
+
+:root {
+  --bg: #0d1117;
+  --terminal-bg: #0c0c0c;
+  --surface: #161b22;
+  --border: #30363d;
+  --text: #c9d1d9;
+  --text-dim: #8b949e;
+  --text-muted: #6e7681;
+  --green: #3fb950;
+  --blue: #58a6ff;
+  --orange: #d2991d;
+  --red: #f85149;
+  --purple: #a371f7;
+  --cyan: #39c5cf;
+  --prompt: #3fb950;
+  --link: #58a6ff;
+  --selection: rgba(88, 166, 255, 0.3);
+  --font: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'SF Mono', 'Monaco', monospace;
+  --font-size: 16px;
+  --line-height: 1.75;
+  --radius: 8px;
+  --max-width: 900px;
+  --scanline-opacity: 0.03;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+::selection { background: var(--selection); color: #fff; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, var(--scanline-opacity)) 2px,
+      rgba(0, 0, 0, var(--scanline-opacity)) 4px
+    );
+}
+
+/* ---- Terminal Window ---- */
+.terminal {
+  width: 100%;
+  max-width: var(--max-width);
+  background: var(--terminal-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+  overflow: hidden;
+  animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.terminal-header {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  background: #161b22;
+  border-bottom: 1px solid var(--border);
+  user-select: none;
+}
+
+.win-buttons {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.win-btn {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  transition: opacity 0.2s;
+}
+.win-btn:hover { opacity: 0.8; }
+.win-btn.close  { background: #ff5f57; }
+.win-btn.min    { background: #febc2e; }
+.win-btn.max    { background: #28c840; }
+
+.terminal-title {
+  flex: 1;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-right: 48px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.terminal-body {
+  padding: 28px 32px 36px;
+  min-height: 400px;
+}
+
+/* ---- Typography ---- */
+h1, h2, h3 { font-weight: 600; color: #fff; }
+h1 { font-size: 1.6rem; margin-bottom: 0.5rem; }
+h2 { font-size: 1.2rem; margin: 1.8rem 0 0.6rem; }
+h3 { font-size: 1.05rem; margin: 1.2rem 0 0.4rem; }
+a { color: var(--link); text-decoration: none; transition: color 0.15s; }
+a:hover { color: #79c0ff; text-decoration: underline; }
+
+/* ---- Prompt Line ---- */
+.prompt {
+  color: var(--green);
+  user-select: none;
+}
+.prompt-dir {
+  color: var(--blue);
+}
+.prompt-symbol {
+  color: var(--green);
+  margin: 0 6px;
+}
+
+/* ---- Typing Effect ---- */
+.typing-line {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid var(--green);
+  animation:
+    typing 2.5s steps(40, end),
+    blink-caret 0.75s step-end infinite;
+  animation-fill-mode: forwards;
+  width: 0;
+  display: inline-block;
+  max-width: 100%;
+}
+.typing-line.done {
+  width: auto;
+  max-width: none;
+  border-right-color: transparent;
+  animation: none;
+  white-space: normal;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50%      { border-color: var(--green); }
+}
+
+/* ---- Cursor Blink ---- */
+.cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  background: var(--green);
+  vertical-align: text-bottom;
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+
+/* ---- ASCII Art ---- */
+.ascii-art {
+  color: var(--cyan);
+  font-size: 11px;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  white-space: pre;
+  user-select: none;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ---- Navigation / Command Menu ---- */
+.cmd-menu {
+  margin: 1.8rem 0 1rem;
+}
+.cmd-item {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 8px 0;
+  color: var(--text);
+  transition: color 0.15s, transform 0.15s;
+}
+.cmd-item:hover {
+  color: #fff;
+  transform: translateX(4px);
+  text-decoration: none;
+}
+.cmd-prompt {
+  color: var(--green);
+  flex-shrink: 0;
+}
+.cmd-name {
+  color: var(--blue);
+  font-weight: 500;
+  min-width: 80px;
+  flex-shrink: 0;
+}
+.cmd-desc {
+  color: var(--text-dim);
+  font-size: 0.9em;
+}
+
+/* ---- Divider ---- */
+.divider {
+  border: none;
+  border-top: 1px dashed var(--border);
+  margin: 1.2rem 0;
+}
+
+/* ---- Tags / Badges ---- */
+.tag {
+  display: inline-block;
+  padding: 3px 10px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  margin: 3px;
+  white-space: nowrap;
+}
+.tag.green  { color: var(--green);  border-color: var(--green); }
+.tag.blue   { color: var(--blue);   border-color: var(--blue); }
+.tag.orange { color: var(--orange); border-color: var(--orange); }
+.tag.purple { color: var(--purple); border-color: var(--purple); }
+
+/* ---- Resume / Content Lists ---- */
+.entry {
+  margin-bottom: 1.2rem;
+  padding-left: 16px;
+  border-left: 2px solid var(--border);
+  transition: border-color 0.2s;
+}
+.entry:hover { border-left-color: var(--blue); }
+.entry-title {
+  font-weight: 600;
+  color: #fff;
+}
+.entry-meta {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  margin-bottom: 4px;
+}
+.entry-detail {
+  color: var(--text-dim);
+  font-size: 0.95rem;
+}
+
+/* ---- Photo Grid ---- */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  margin: 1.2rem 0;
+}
+.photo-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.photo-card:hover {
+  border-color: var(--blue);
+  transform: translateY(-2px);
+}
+.photo-img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  display: block;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+}
+.photo-caption {
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+
+/* ---- Blog / Notes List ---- */
+.post-list { list-style: none; }
+.post-item {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.15s;
+}
+.post-item:hover { background: rgba(255,255,255,0.02); }
+.post-date {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  white-space: nowrap;
+  min-width: 105px;
+  flex-shrink: 0;
+}
+.post-title {
+  color: var(--text);
+  font-weight: 500;
+  transition: color 0.15s;
+}
+.post-item:hover .post-title { color: var(--blue); }
+.post-tag {
+  font-size: 0.75rem;
+  padding: 1px 6px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  color: var(--text-dim);
+  margin-left: 8px;
+  white-space: nowrap;
+}
+
+/* ---- Post Expandable Content ---- */
+.post-expand {
+  padding: 16px 0 16px 120px;
+}
+
+/* ---- Article Content ---- */
+.article { max-width: 100%; }
+.article p { margin-bottom: 1rem; }
+.article blockquote {
+  border-left: 3px solid var(--orange);
+  padding-left: 16px;
+  margin: 1rem 0;
+  color: var(--text-dim);
+  font-style: italic;
+}
+.article ul, .article ol { padding-left: 24px; margin-bottom: 1rem; }
+.article li { margin-bottom: 0.3rem; }
+
+/* ---- Back Link ---- */
+.back-link {
+  display: inline-block;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  transition: color 0.15s;
+}
+.back-link:hover { color: var(--text); }
+
+/* ---- Skills / Progress ---- */
+.skill-bar {
+  margin-bottom: 10px;
+}
+.skill-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+}
+.skill-track {
+  height: 6px;
+  background: var(--surface);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.skill-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.6s ease;
+}
+.skill-fill.green  { background: var(--green); }
+.skill-fill.blue   { background: var(--blue); }
+.skill-fill.orange { background: var(--orange); }
+.skill-fill.purple { background: var(--purple); }
+
+/* ---- Footer ---- */
+.terminal-footer {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+/* ========================================
+   Responsive — Tablet (< 768px)
+   ======================================== */
+@media (max-width: 768px) {
+  body {
+    padding: 1rem;
+    font-size: 15px;
+  }
+
+  .terminal-body {
+    padding: 22px 20px 28px;
+  }
+
+  .terminal-title {
+    font-size: 11px;
+    margin-right: 36px;
+  }
+
+  h1 { font-size: 1.35rem; }
+  h2 { font-size: 1.1rem; }
+  h3 { font-size: 1rem; }
+
+  .ascii-art {
+    font-size: 8px;
+    margin-bottom: 16px;
+  }
+
+  .cmd-item {
+    gap: 4px;
+  }
+  .cmd-name {
+    min-width: 65px;
+  }
+
+  .photo-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .post-item {
+    flex-wrap: wrap;
+    gap: 4px 12px;
+  }
+  .post-date {
+    min-width: auto;
+  }
+
+  .post-expand {
+    padding: 12px 0 12px 24px;
+  }
+
+  .entry {
+    padding-left: 12px;
+  }
+
+  .terminal-footer {
+    font-size: 0.75rem;
+  }
+}
+
+/* ========================================
+   Responsive — Mobile (< 480px)
+   ======================================== */
+@media (max-width: 480px) {
+  body {
+    padding: 0.4rem;
+    font-size: 14px;
+  }
+
+  .terminal {
+    border-radius: 6px;
+  }
+
+  .terminal-header {
+    padding: 10px 12px;
+  }
+
+  .win-btn {
+    width: 10px;
+    height: 10px;
+  }
+  .win-buttons {
+    gap: 6px;
+  }
+
+  .terminal-title {
+    font-size: 10px;
+    margin-right: 28px;
+  }
+
+  .terminal-body {
+    padding: 18px 14px 22px;
+    min-height: auto;
+  }
+
+  h1 { font-size: 1.2rem; }
+  h2 { font-size: 1.05rem; margin: 1.4rem 0 0.5rem; }
+  h3 { font-size: 0.95rem; }
+
+  .ascii-art {
+    font-size: 5.5px;
+    margin-bottom: 12px;
+  }
+
+  /* Navigation stacked on mobile */
+  .cmd-item {
+    flex-direction: column;
+    gap: 2px;
+    padding: 10px 0;
+  }
+  .cmd-name {
+    min-width: auto;
+  }
+
+  /* Photo grid: 1 column on very small screens */
+  .photo-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .photo-caption {
+    font-size: 0.75rem;
+    padding: 6px 8px;
+  }
+
+  /* Blog posts stack vertically */
+  .post-item {
+    flex-direction: column;
+    gap: 2px;
+    padding: 10px 0;
+  }
+  .post-tag {
+    margin-left: 0;
+  }
+
+  .post-expand {
+    padding: 10px 0 10px 16px;
+  }
+
+  /* Resume entries */
+  .entry {
+    padding-left: 10px;
+    margin-bottom: 1rem;
+  }
+
+  /* Skills */
+  .skill-label {
+    font-size: 0.8rem;
+  }
+
+  /* Tags wrap nicely */
+  .tag {
+    font-size: 0.75rem;
+    padding: 2px 7px;
+  }
+
+  .terminal-footer {
+    font-size: 0.7rem;
+    margin-top: 1.5rem;
+  }
+}

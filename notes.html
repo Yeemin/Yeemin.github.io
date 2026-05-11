@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>notes — Sheng Yiming</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="terminal">
+    <div class="terminal-header">
+      <div class="win-buttons">
+        <span class="win-btn close"></span>
+        <span class="win-btn min"></span>
+        <span class="win-btn max"></span>
+      </div>
+      <span class="terminal-title">yeeminshon@portal — ~/notes — vim scratchpad.md</span>
+    </div>
+
+    <div class="terminal-body">
+      <!-- Back -->
+      <a href="index.html" class="back-link">← cd ~/ 返回首页</a>
+
+      <!-- Demo Banner -->
+      <div style="border:1px solid var(--orange); border-left:3px solid var(--orange); border-radius:4px; padding:8px 14px; margin-bottom:1rem; background:rgba(210,153,29,0.06);">
+        <p style="color:var(--orange); font-size:0.85em; margin:0;">
+          ⚠ DEMO — 当前页面为演示内容，笔记为占位示例，真实数据待补充完善。
+        </p>
+      </div>
+
+      <!-- Header -->
+      <p><span class="prompt">❯</span> <span style="color:var(--orange);">tree</span> ~/notes/</p>
+      <p style="color:var(--text-dim); margin-bottom:1rem;">
+        <span style="color:var(--blue);">~/notes</span><br>
+        ├── <span style="color:var(--green);">scratchpad.md</span>          ← 碎片笔记<br>
+        ├── <span style="color:var(--green);">reading-list.md</span>        ← 阅读清单<br>
+        ├── <span style="color:var(--green);">tools-i-use.md</span>         ← 常用工具<br>
+        └── <span style="color:var(--green);">quotes.md</span>              ← 摘抄收藏
+      </p>
+
+      <hr class="divider">
+
+      <!-- Scratchpad Notes -->
+      <h2>## scratchpad.md <span style="color:var(--text-muted);">碎片笔记</span></h2>
+
+      <div class="entry">
+        <div class="entry-meta">2025-05-10 23:42</div>
+        <div class="entry-title">关于 LLM Agent 的思考</div>
+        <div class="entry-detail">
+          LLM Agent 的本质是将大模型的推理能力与外部工具执行解耦。关键设计点：
+          1. Tool Definition — 清晰的 schema 定义比 prompt engineering 更重要
+          2. Planning — ReAct 模式在大多数场景够用，复杂任务可考虑 tree-of-thought
+          3. Memory — 短期记忆（上下文窗口）+ 长期记忆（向量检索）的混合架构是当前最优解
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-meta">2025-05-08 15:20</div>
+        <div class="entry-title">Go channel 的一个坑</div>
+        <div class="entry-detail">
+          <code style="color:var(--orange);">close(nil chan)</code> 会 panic，不是返回 error。<br>
+          最佳实践：发送方 close channel，接收方用 <code style="color:var(--blue);">v, ok := &lt;-ch</code> 检测关闭。<br>
+          多发送方场景使用 <code style="color:var(--purple);">sync.Once</code> 或者专门的 done channel。
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-meta">2025-04-30 09:15</div>
+        <div class="entry-title">PostgreSQL 查询优化笔记</div>
+        <div class="entry-detail">
+          <code style="color:var(--green);">EXPLAIN ANALYZE</code> 比 <code style="color:var(--green);">EXPLAIN</code> 更准确，因为会实际执行。<br>
+          注意 <code style="color:var(--orange);">Seq Scan</code> vs <code style="color:var(--blue);">Index Scan</code> — 小表 Seq Scan 反而更快。<br>
+          <code style="color:var(--purple);">pg_stat_statements</code> 是排查慢查询的第一站。
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <!-- Reading List -->
+      <h2>## reading-list.md <span style="color:var(--text-muted);">阅读清单</span></h2>
+
+      <ul class="post-list">
+        <li class="post-item">
+          <span class="post-date" style="color:var(--green);">✓ 已读</span>
+          <span class="post-title">Designing Data-Intensive Applications — Martin Kleppmann</span>
+        </li>
+        <li class="post-item">
+          <span class="post-date" style="color:var(--green);">✓ 已读</span>
+          <span class="post-title">Crafting Interpreters — Robert Nystrom</span>
+        </li>
+        <li class="post-item">
+          <span class="post-date" style="color:var(--orange);">● 在读</span>
+          <span class="post-title">Database Internals — Alex Petrov</span>
+        </li>
+        <li class="post-item">
+          <span class="post-date" style="color:var(--text-dim);">○ 待读</span>
+          <span class="post-title">The Art of Computer Programming, Vol 1 — Knuth</span>
+        </li>
+        <li class="post-item">
+          <span class="post-date" style="color:var(--text-dim);">○ 待读</span>
+          <span class="post-title">A Philosophy of Software Design — John Ousterhout</span>
+        </li>
+      </ul>
+
+      <hr class="divider">
+
+      <!-- Tools I Use -->
+      <h2>## tools-i-use.md <span style="color:var(--text-muted);">常用工具</span></h2>
+
+      <p style="line-height:2;">
+        <span style="color:var(--text-muted);">Editor:</span>        <span style="color:var(--green);">neovim</span> + <span style="color:var(--blue);">vscode</span><br>
+        <span style="color:var(--text-muted);">Terminal:</span>      <span style="color:var(--green);">warp</span> / <span style="color:var(--green);">kitty</span><br>
+        <span style="color:var(--text-muted);">Shell:</span>         <span style="color:var(--green);">zsh</span> + <span style="color:var(--blue);">starship</span><br>
+        <span style="color:var(--text-muted);">Notes:</span>         <span style="color:var(--purple);">Obsidian</span><br>
+        <span style="color:var(--text-muted);">Git:</span>           <span style="color:var(--orange);">lazygit</span> + <span style="color:var(--green);">gh CLI</span><br>
+        <span style="color:var(--text-muted);">Browser:</span>       <span style="color:var(--blue);">Arc</span><br>
+        <span style="color:var(--text-muted);">Launcher:</span>      <span style="color:var(--orange);">Raycast</span><br>
+        <span style="color:var(--text-muted);">Font:</span>          <span style="color:var(--cyan);">JetBrains Mono</span>
+      </p>
+
+      <hr class="divider">
+
+      <!-- Quotes -->
+      <h2>## quotes.md <span style="color:var(--text-muted);">摘抄收藏</span></h2>
+
+      <div class="article">
+        <blockquote>
+          "Simplicity is prerequisite for reliability."
+        </blockquote>
+        <p style="text-align:right; color:var(--text-dim); font-size:0.85rem;">— Edsger W. Dijkstra</p>
+
+        <blockquote>
+          "Make it work, make it right, make it fast."
+        </blockquote>
+        <p style="text-align:right; color:var(--text-dim); font-size:0.85rem;">— Kent Beck</p>
+
+        <blockquote>
+          "The most effective debugging tool is still careful thought."
+        </blockquote>
+        <p style="text-align:right; color:var(--text-dim); font-size:0.85rem;">— Brian Kernighan</p>
+      </div>
+
+      <!-- Footer -->
+      <div class="terminal-footer">
+        <span class="prompt">❯</span> <span style="color:var(--text-muted);">
+          <span style="color:var(--text-muted);">"~/.notes/scratchpad.md" 4L, 128B</span> ·
+          按 <a href="index.html">:q</a> 返回首页
+        </span>
+        <span class="cursor"></span>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
