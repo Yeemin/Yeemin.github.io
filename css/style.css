@@ -194,11 +194,13 @@ a:hover { color: #79c0ff; text-decoration: underline; }
 /* ---- Navigation / Command Menu ---- */
 .cmd-menu {
   margin: 1.8rem 0 1rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .cmd-item {
   display: flex;
   align-items: baseline;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 6px;
   padding: 8px 0;
   color: var(--text);
@@ -501,14 +503,16 @@ a:hover { color: #79c0ff; text-decoration: underline; }
     margin-bottom: 12px;
   }
 
-  /* Navigation stacked on mobile */
+  /* Navigation: keep items on one line */
   .cmd-item {
-    flex-direction: column;
-    gap: 2px;
+    gap: 4px;
     padding: 10px 0;
   }
   .cmd-name {
     min-width: auto;
+  }
+  .cmd-desc {
+    font-size: 0.85em;
   }
 
   /* Photo grid: 1 column on very small screens */

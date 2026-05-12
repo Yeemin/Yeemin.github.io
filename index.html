@@ -118,28 +118,25 @@
            data-reveal="3800">
 
         <!-- AI Disclaimer Banner -->
-        <div style="border:1px solid var(--orange); border-left:3px solid var(--orange); border-radius:4px; padding:12px 16px; margin-bottom:1.2rem; background:rgba(210,153,29,0.06);">
-          <p style="color:var(--orange); font-weight:600; margin-bottom:4px;">
-            ⚠ AI 生成声明
-          </p>
-          <p style="color:var(--text-dim); font-size:0.9em; line-height:1.6;">
-            以下内容由 AI 阅读简历后自动生成，评价力求客观真实。<br>
-            模型：<span style="color:var(--cyan);">DeepSeek-V4 Pro</span>
-          </p>
+        <div style="border:1px solid var(--orange); border-left:3px solid var(--orange); border-radius:4px; padding:10px 16px; margin-bottom:1.2rem; background:rgba(210,153,29,0.06); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;">
+          <div>
+            <p style="color:var(--orange); font-weight:600; margin-bottom:2px;">
+              ⚠ AI 生成声明
+            </p>
+            <p style="color:var(--text-dim); font-size:0.85em; line-height:1.6; margin:0;">
+              以下内容由 AI 阅读简历后自动生成，评价力求客观真实。<br>
+              模型：<span style="color:var(--cyan);">DeepSeek-V4 Pro</span>
+            </p>
+          </div>
+          <button id="ai-regenerate-btn" onclick="regenerateInsight()" disabled
+                  style="flex-shrink:0; padding:5px 14px; border:1px solid var(--blue); border-radius:4px; background:transparent; color:var(--blue); font-family:var(--font); font-size:0.8rem; cursor:pointer; transition:all 0.2s;"
+                  onmouseover="if(!this.disabled)this.style.background='rgba(88,166,255,0.1)'"
+                  onmouseout="if(!this.disabled)this.style.background='transparent'">
+            ⟳ 生成中...
+          </button>
         </div>
 
-        <p style="color:var(--text-dim); line-height:1.9; margin-bottom:0.8rem;">
-          生一鸣的职业生涯呈现出一条清晰的成长轨迹：从圆通速递的 .NET 实习生起步，到如今全面负责交管 12123 这个拥有 5.9 亿用户、日活 2800 万的超级应用后台架构——这条路走了十年，每一步都扎实。
-        </p>
-        <p style="color:var(--text-dim); line-height:1.9; margin-bottom:0.8rem;">
-          他的技术底色是 Java 生态的深度掌握——Spring Cloud、Dubbo、Kafka、Redis、ElasticSearch——但这些工具在他手里不是目的，而是手段。他真正的核心竞争力在于面对极端场景时的工程判断力：自研基于密码本的黑盒算法提升接口安全性、设计两级队列支撑日均两千万消息推送、构建省部星型架构下的统一用户中心、在跨网数据交换中自研动态负载均衡——这些决策的背后，是对分布式系统一致性、可用性和分区容错性的深刻权衡。
-        </p>
-        <p style="color:var(--text-dim); line-height:1.9; margin-bottom:0.8rem;">
-          更难得的是他对技术趋势的前瞻嗅觉。2025 年初大模型浪潮兴起后，他迅速将 DeepSeek-V3 落地为交管小安智能问答服务，并通过知识库精准控制回答质量（准确率 96%以上），有效规避了通用大模型在政务场景中的幻觉风险。这种"用前沿技术解决真实问题"的工程化能力，是判断一个架构师是否具备持续进化能力的核心指标。
-        </p>
-        <p style="color:var(--text-dim); line-height:1.9;">
-          综合来看，生一鸣不是理论派架构师，而是能在亿级用户规模下扛住压力、做出关键决策并亲手落地的实战型人才。他的不可替代性在于同时具备三种能力：对超大规模系统架构的全局掌控力、对具体技术细节的深入穿透力、以及将新技术快速工程化的落地执行力。
-        </p>
+        <div id="ai-insight-content"></div>
       </div>
 
       <!-- Footer -->
@@ -155,6 +152,108 @@
     </div>
   </div>
 
+  <script src="ai-insight/ai-insight-data.js"></script>
+  <script>
+    var _aiUsed = [];
+    var _aiTimer = null;
+    var _aiContainer = null;
+
+    function streamText(text, callback) {
+      var chars = Array.from(text);
+      var i = 0;
+      var el = document.createElement('p');
+      el.style.cssText = 'color:var(--text-dim);line-height:1.9;margin-bottom:0.8rem;';
+      _aiContainer.appendChild(el);
+
+      // Add blinking cursor span
+      var cursor = document.createElement('span');
+      cursor.className = 'cursor';
+      cursor.style.display = 'inline-block';
+      el.appendChild(cursor);
+
+      function tick() {
+        if (i < chars.length) {
+          // Output 2-5 characters per tick for natural pace
+          var chunk = chars.slice(i, i + (2 + Math.floor(Math.random() * 4)));
+          i += chunk.length;
+          cursor.before(document.createTextNode(chunk.join('')));
+          _aiTimer = setTimeout(tick, 25 + Math.random() * 35);
+        } else {
+          cursor.remove();
+          _aiTimer = null;
+          if (callback) callback();
+        }
+      }
+      tick();
+    }
+
+    function renderInsight(text, done) {
+      // Clear any running stream
+      if (_aiTimer) { clearTimeout(_aiTimer); _aiTimer = null; }
+      _aiContainer.innerHTML = '';
+
+      var paragraphs = text.split('\n\n').filter(function(p) { return p.trim(); });
+      var idx = 0;
+
+      function nextParagraph() {
+        if (idx < paragraphs.length) {
+          streamText(paragraphs[idx].trim(), function() {
+            idx++;
+            if (idx < paragraphs.length) {
+              _aiTimer = setTimeout(nextParagraph, 200);
+            } else {
+              // Last paragraph done — fire completion callback
+              if (done) done();
+            }
+          });
+        }
+      }
+      nextParagraph();
+    }
+
+    function pickInsight() {
+      if (typeof aiInsights === 'undefined' || !aiInsights.length) return null;
+      // Reset pool if all used
+      if (_aiUsed.length >= aiInsights.length) {
+        _aiUsed = [];
+      }
+      // Pick unused index
+      var pool = [];
+      for (var i = 0; i < aiInsights.length; i++) {
+        if (_aiUsed.indexOf(i) === -1) pool.push(i);
+      }
+      var pick = pool[Math.floor(Math.random() * pool.length)];
+      _aiUsed.push(pick);
+      return aiInsights[pick];
+    }
+
+    function regenerateInsight() {
+      var btn = document.getElementById('ai-regenerate-btn');
+      if (!btn || btn.disabled) return;
+      btn.disabled = true;
+      btn.textContent = '⟳ 生成中...';
+      var text = pickInsight();
+      if (text) {
+        renderInsight(text, function() {
+          btn.disabled = false;
+          btn.textContent = '⟳ 重新生成';
+        });
+      }
+    }
+
+    // Initial load
+    (function init() {
+      _aiContainer = document.getElementById('ai-insight-content');
+      if (!_aiContainer) return;
+      var text = pickInsight();
+      if (text) {
+        renderInsight(text, function() {
+          var btn = document.getElementById('ai-regenerate-btn');
+          if (btn) { btn.disabled = false; btn.textContent = '⟳ 重新生成'; }
+        });
+      }
+    })();
+  </script>
   <script src="js/main.js"></script>
 </body>
 </html>
