@@ -158,6 +158,86 @@
     var _aiTimer = null;
     var _aiContainer = null;
 
+    function scrollToBottom() {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'instant' });
+    }
+
+    // Multiple thinking sequences — randomly picked each time
+    var THINKING_SETS = [
+      // Set 0: standard processing pipeline
+      ['读取简历数据...', '解析工作经历...', '提取技术能力标签...', '分析架构设计深度...', '评估AI工程化实践...', '生成多维度综合评价...', '完成。'],
+      // Set 1: resume analysis viewpoint
+      ['加载简历文档...', '结构化解析职业轨迹...', '识别核心技术栈...', '量化项目影响力指标...', '对比行业基准水平...', '生成差异化能力画像...', '评价报告就绪。'],
+      // Set 2: interview-style assessment
+      ['审阅候选人履历...', '核实项目经历真实性...', '评估系统设计能力...', '分析技术决策质量...', '考察团队协作经验...', '综合评定技术等级...', '评估完成。'],
+      // Set 3: deep analysis
+      ['扫描履历关键信息...', '构建职业发展时间线...', '提取关键项目里程碑...', '深度分析架构决策...', '评估技术创新能力...', '计算综合竞争力得分...', '分析报告已生成。'],
+      // Set 4: AI agent style
+      ['Agent: 收到简历分析任务...', 'Agent: 调用简历解析工具...', 'Agent: 提取关键实体与关系...', 'Agent: 进行技术深度评分...', 'Agent: 执行行业对标分析...', 'Agent: 聚合多维度评估结果...', 'Agent: 任务完成。'],
+      // Set 5: quick review (shorter)
+      ['载入简历中...', '分析技术栈...', '评估项目经验...', '综合评价中...', '报告生成完毕。'],
+      // Set 6: data-driven
+      ['数据采集: 简历文本提取完成', '数据清洗: 结构化处理中', '特征工程: 抽取技术维度特征', '模型推理: 架构能力评分', '模型推理: AI实践能力评分', '结果聚合: 生成多维度评语', '输出: 评价报告就绪。'],
+      // Set 7: systematic review
+      ['初始化评估引擎...', '加载评估模型参数...', '输入: 十年职业经历数据', '维度一: 技术深度评估', '维度二: 架构能力评估', '维度三: 创新能力评估', '维度四: 领导力评估', '输出综合评价报告...', '评估引擎运行完毕。'],
+      // Set 8: thinking out loud
+      ['嗯，让我仔细看看这份简历...', '10年经验，从.NET到Java到AI...', '交管12123这个项目数据很扎实...', '自研加密算法和负载均衡，这个人动手能力很强...', '消息推送的架构演进思路很清晰...', '大模型落地也跟上了，96%准确率不容易...', '总体来看是个实战派架构师...', '好了，把评价写出来。'],
+      // Set 9: formal analysis
+      ['建立候选人档案...', '逐项审核工作经历...', '验证关键技术指标...', '评估架构设计能力...', '分析技术创新表现...', '综合评价与建议...', '评阅意见已出具。'],
+    ];
+    var THINKING_STEP_DELAY = 420; // ms between each step
+
+    function showThinking(done) {
+      _aiContainer.innerHTML = '';
+
+      var block = document.createElement('div');
+      block.className = 'thinking-block';
+      _aiContainer.appendChild(block);
+
+      // Pick a random thinking sequence
+      var steps = THINKING_SETS[Math.floor(Math.random() * THINKING_SETS.length)];
+      var idx = 0;
+
+      function nextStep() {
+        if (idx < steps.length) {
+          var line = document.createElement('p');
+          line.className = 'thinking-line';
+          line.textContent = steps[idx];
+          if (idx === steps.length - 1) {
+            line.classList.add('done');
+          }
+          block.appendChild(line);
+          idx++;
+          scrollToBottom();
+
+          // Delay: last step waits a bit longer before callback
+          var delay = (idx === steps.length)
+            ? 500
+            : THINKING_STEP_DELAY + Math.random() * 200;
+          _aiTimer = setTimeout(nextStep, delay);
+        } else {
+          _aiTimer = null;
+          // Brief pause then collapse thinking block and proceed
+          setTimeout(function() {
+            block.style.opacity = '0';
+            block.style.maxHeight = block.offsetHeight + 'px';
+            block.style.transition = 'opacity 0.35s ease, max-height 0.35s ease';
+            setTimeout(function() {
+              block.style.maxHeight = '0';
+              block.style.padding = '0 16px';
+              block.style.marginBottom = '0.5rem';
+              block.style.borderWidth = '0';
+              setTimeout(function() {
+                _aiContainer.innerHTML = '';
+                if (done) done();
+              }, 350);
+            }, 50);
+          }, 500);
+        }
+      }
+      nextStep();
+    }
+
     function streamText(text, callback) {
       var chars = Array.from(text);
       var i = 0;
@@ -165,7 +245,6 @@
       el.style.cssText = 'color:var(--text-dim);line-height:1.9;margin-bottom:0.8rem;';
       _aiContainer.appendChild(el);
 
-      // Add blinking cursor span
       var cursor = document.createElement('span');
       cursor.className = 'cursor';
       cursor.style.display = 'inline-block';
@@ -173,10 +252,10 @@
 
       function tick() {
         if (i < chars.length) {
-          // Output 2-5 characters per tick for natural pace
           var chunk = chars.slice(i, i + (2 + Math.floor(Math.random() * 4)));
           i += chunk.length;
           cursor.before(document.createTextNode(chunk.join('')));
+          scrollToBottom();
           _aiTimer = setTimeout(tick, 25 + Math.random() * 35);
         } else {
           cursor.remove();
@@ -188,36 +267,33 @@
     }
 
     function renderInsight(text, done) {
-      // Clear any running stream
       if (_aiTimer) { clearTimeout(_aiTimer); _aiTimer = null; }
-      _aiContainer.innerHTML = '';
 
-      var paragraphs = text.split('\n\n').filter(function(p) { return p.trim(); });
-      var idx = 0;
+      showThinking(function() {
+        var paragraphs = text.split('\n\n').filter(function(p) { return p.trim(); });
+        var idx = 0;
 
-      function nextParagraph() {
-        if (idx < paragraphs.length) {
-          streamText(paragraphs[idx].trim(), function() {
-            idx++;
-            if (idx < paragraphs.length) {
-              _aiTimer = setTimeout(nextParagraph, 200);
-            } else {
-              // Last paragraph done — fire completion callback
-              if (done) done();
-            }
-          });
+        function nextParagraph() {
+          if (idx < paragraphs.length) {
+            streamText(paragraphs[idx].trim(), function() {
+              idx++;
+              if (idx < paragraphs.length) {
+                _aiTimer = setTimeout(nextParagraph, 200);
+              } else {
+                if (done) done();
+              }
+            });
+          }
         }
-      }
-      nextParagraph();
+        nextParagraph();
+      });
     }
 
     function pickInsight() {
       if (typeof aiInsights === 'undefined' || !aiInsights.length) return null;
-      // Reset pool if all used
       if (_aiUsed.length >= aiInsights.length) {
         _aiUsed = [];
       }
-      // Pick unused index
       var pool = [];
       for (var i = 0; i < aiInsights.length; i++) {
         if (_aiUsed.indexOf(i) === -1) pool.push(i);

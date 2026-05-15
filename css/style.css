@@ -390,6 +390,44 @@ a:hover { color: #79c0ff; text-decoration: underline; }
 .skill-fill.orange { background: var(--orange); }
 .skill-fill.purple { background: var(--purple); }
 
+/* ---- Thinking / Processing Block ---- */
+.thinking-block {
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--text-muted);
+  border-radius: 4px;
+  padding: 10px 16px;
+  margin-bottom: 1rem;
+  background: rgba(110,118,129,0.06);
+  font-size: 0.85em;
+  transition: opacity 0.3s ease;
+}
+.thinking-line {
+  color: var(--text-muted);
+  margin: 0;
+  padding: 2px 0;
+  opacity: 0;
+  transform: translateX(-4px);
+  animation: thinkFadeIn 0.3s ease forwards;
+}
+.thinking-line.done {
+  color: var(--green);
+}
+.thinking-line .dot-pulse::after {
+  content: '';
+  animation: dots 1s steps(4, end) infinite;
+}
+@keyframes dots {
+  0%   { content: ''; }
+  25%  { content: '.'; }
+  50%  { content: '..'; }
+  75%  { content: '...'; }
+  100% { content: ''; }
+}
+@keyframes thinkFadeIn {
+  from { opacity: 0; transform: translateX(-4px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
 /* ---- Footer ---- */
 .terminal-footer {
   font-size: 0.8rem;
