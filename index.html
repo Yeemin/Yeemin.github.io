@@ -157,8 +157,10 @@
     var _aiUsed = [];
     var _aiTimer = null;
     var _aiContainer = null;
+    var _shouldScroll = false;
 
     function scrollToBottom() {
+      if (!_shouldScroll) return;
       window.scrollTo({ top: document.body.scrollHeight, behavior: 'instant' });
     }
 
@@ -308,6 +310,7 @@
       if (!btn || btn.disabled) return;
       btn.disabled = true;
       btn.textContent = '⟳ 生成中...';
+      _shouldScroll = true;
       var text = pickInsight();
       if (text) {
         renderInsight(text, function() {
