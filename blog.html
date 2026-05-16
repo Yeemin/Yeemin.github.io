@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>blog — Sheng Yiming</title>
+  <title>blog — 生一鸣</title>
   <link rel="stylesheet" href="css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -19,140 +19,34 @@
     </div>
 
     <div class="terminal-body">
-      <!-- Back -->
       <a href="index.html" class="back-link">← cd ~/ 返回首页</a>
 
-      <!-- Demo Banner -->
-      <div style="border:1px solid var(--orange); border-left:3px solid var(--orange); border-radius:4px; padding:8px 14px; margin-bottom:1rem; background:rgba(210,153,29,0.06);">
-        <p style="color:var(--orange); font-size:0.85em; margin:0;">
-          ⚠ DEMO — 当前页面为演示内容，文章为占位示例，真实数据待补充完善。
-        </p>
-      </div>
-
-      <!-- Header -->
       <p><span class="prompt">❯</span> <span style="color:var(--orange);">ls</span> -t ~/blog/posts/</p>
       <p style="color:var(--text-dim); margin-bottom:1.2rem;">
-        共 6 篇文章 · 标签: <span class="tag green">Go</span> <span class="tag blue">Rust</span> <span class="tag orange">分布式</span> <span class="tag purple">性能优化</span>
+        共 1 篇文章 · 标签: <span class="tag green">MyBatis</span> <span class="tag blue">Java</span> <span class="tag orange">开源</span>
       </p>
 
       <hr class="divider">
 
-      <!-- Post List -->
       <ul class="post-list">
         <li>
-          <a href="#" class="post-item" onclick="togglePost('post1'); return false;">
-            <span class="post-date">2025-05-01</span>
-            <span class="post-title">Go 1.24 新特性：泛型性能优化深度解析</span>
-            <span class="post-tag" style="border-color:var(--green);color:var(--green);">Go</span>
+          <a href="blog/mybatis-batch.html" class="post-item">
+            <span class="post-date">2022-04</span>
+            <span class="post-title">mybatisBatch：简化 MyBatis 批量保存的插件实践</span>
+            <span class="post-tag" style="border-color:var(--green);color:var(--green);">MyBatis</span>
           </a>
-          <div id="post1" class="post-expand" style="display:none">
-            <div class="article">
-              <p>Go 1.24 在泛型实现上做了大量底层优化，编译速度提升 15%，运行时开销显著降低。本文将深入 runtime 源码剖析这些改进。</p>
-              <blockquote>核心改进在于字典传递方式的优化——从原先的指针间接寻址改为寄存器直接传递。</blockquote>
-              <p>实测对比：泛型排序函数在 1.24 版本中性能提升 23%，已经非常接近手写特定类型代码。</p>
-              <p style="color:var(--text-muted); font-size:0.8rem;">// 阅读时间: 8 min · 标签: Go, Generics, Performance</p>
-            </div>
-          </div>
-        </li>
-
-        <li>
-          <a href="#" class="post-item" onclick="togglePost('post2'); return false;">
-            <span class="post-date">2025-04-18</span>
-            <span class="post-title">Rust 异步运行时对比：tokio vs smol vs monoio</span>
-            <span class="post-tag" style="border-color:var(--blue);color:var(--blue);">Rust</span>
-          </a>
-          <div id="post2" class="post-expand" style="display:none">
-            <div class="article">
-              <p>从吞吐量、延迟、资源占用三个维度，对 Rust 三大异步运行时进行 benchmark 对比。</p>
-              <p>结论：tokio 生态最完善适合通用场景；monoio 在线程-per-core 模型下吞吐最高；smol 适合嵌入式场景。</p>
-              <p style="color:var(--text-muted); font-size:0.8rem;">// 阅读时间: 12 min · 标签: Rust, Async, Benchmark</p>
-            </div>
-          </div>
-        </li>
-
-        <li>
-          <a href="#" class="post-item" onclick="togglePost('post3'); return false;">
-            <span class="post-date">2025-03-22</span>
-            <span class="post-title">构建高可用的分布式配置中心</span>
-            <span class="post-tag" style="border-color:var(--orange);color:var(--orange);">分布式</span>
-          </a>
-          <div id="post3" class="post-expand" style="display:none">
-            <div class="article">
-              <p>从 etcd + 自定义 watch 机制开始，分享构建一个生产级配置中心的实践心得。</p>
-              <blockquote>配置变更推送的实时性要求不是越低越好——过度追求实时性会引入不必要的复杂度和故障点。</blockquote>
-              <p>涵盖：灰度发布、配置回滚、Schema 校验、客户端容错等关键设计。</p>
-              <p style="color:var(--text-muted); font-size:0.8rem;">// 阅读时间: 15 min · 标签: Distributed Systems, etcd, Configuration</p>
-            </div>
-          </div>
-        </li>
-
-        <li>
-          <a href="#" class="post-item" onclick="togglePost('post4'); return false;">
-            <span class="post-date">2025-02-10</span>
-            <span class="post-title">从零实现一个 SQL 查询优化器</span>
-            <span class="post-tag" style="border-color:var(--purple);color:var(--purple);">Database</span>
-          </a>
-          <div id="post4" class="post-expand" style="display:none">
-            <div class="article">
-              <p>手写一个简单的 SQL 优化器，涵盖：逻辑优化（谓词下推、列裁剪）、物理优化（基于成本的 join 顺序选择）。</p>
-              <p>代码实现使用 Rust，配合详细的算法讲解和可视化执行计划。</p>
-              <p style="color:var(--text-muted); font-size:0.8rem;">// 阅读时间: 20 min · 标签: Database, SQL, Optimizer, Rust</p>
-            </div>
-          </div>
-        </li>
-
-        <li>
-          <a href="#" class="post-item" onclick="togglePost('post5'); return false;">
-            <span class="post-date">2025-01-05</span>
-            <span class="post-title">eBPF 入门实践：用 Go 写一个容器网络监控工具</span>
-            <span class="post-tag" style="border-color:var(--green);color:var(--green);">eBPF</span>
-          </a>
-          <div id="post5" class="post-expand" style="display:none">
-            <div class="article">
-              <p>使用 cilium/ebpf 库，从零构建一个实时监控容器网络流量的命令行工具。</p>
-              <p>详细讲解 eBPF 程序的加载、数据传递（perf buffer / ring buffer）、Go 侧数据处理。</p>
-              <p style="color:var(--text-muted); font-size:0.8rem;">// 阅读时间: 10 min · 标签: eBPF, Go, Networking, Containers</p>
-            </div>
-          </div>
-        </li>
-
-        <li>
-          <a href="#" class="post-item" onclick="togglePost('post6'); return false;">
-            <span class="post-date">2024-12-15</span>
-            <span class="post-title">2024 年度盘点：我的技术栈演化</span>
-            <span class="post-tag" style="border-color:var(--text-dim);color:var(--text-dim);">随笔</span>
-          </a>
-          <div id="post6" class="post-expand" style="display:none">
-            <div class="article">
-              <p>回顾 2024 年技术栈的变化：从 Python → Go → Rust 的探索之路。</p>
-              <p>分享在这一年里让我印象最深的 5 个开源项目，以及它们如何影响了我的工程实践。</p>
-              <p style="color:var(--text-muted); font-size:0.8rem;">// 阅读时间: 6 min · 标签: Retrospective, Tech Stack, Open Source</p>
-            </div>
-          </div>
         </li>
       </ul>
 
       <hr class="divider">
 
-      <p style="color:var(--text-dim); font-size:0.8rem;">
-        // 点击文章标题展开阅读<br>
-        // 订阅 RSS: <span style="color:var(--blue);">/feed.xml</span>
-      </p>
-
-      <!-- Footer -->
       <div class="terminal-footer">
-        <span class="prompt">❯</span> <span style="color:var(--text-muted);">6 posts · 按 <a href="index.html">cd ~</a> 返回首页</span>
+        <span class="prompt">❯</span> <span style="color:var(--text-muted);">1 post · 按 <a href="index.html">cd ~</a> 返回首页</span>
         <span class="cursor"></span>
       </div>
     </div>
   </div>
 
-  <script>
-    function togglePost(id) {
-      const el = document.getElementById(id);
-      el.style.display = el.style.display === 'none' ? 'block' : 'none';
-    }
-  </script>
   <script src="js/main.js"></script>
 </body>
 </html>

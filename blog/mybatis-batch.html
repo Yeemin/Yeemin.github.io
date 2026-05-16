@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — mybatisBatch：简化 MyBatis 批量保存的插件实践</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="terminal">
+    <div class="terminal-header">
+      <div class="win-buttons">
+        <span class="win-btn close"></span>
+        <span class="win-btn min"></span>
+        <span class="win-btn max"></span>
+      </div>
+      <span class="terminal-title">yeeminshon@portal — ~/blog — less mybatis-batch.md</span>
+    </div>
+
+    <div class="terminal-body">
+      <a href="../blog.html" class="back-link">← cd ../ 返回博客列表</a>
+
+      <p><span class="prompt">❯</span> <span style="color:var(--orange);">cat</span> mybatis-batch.md</p>
+      <h1># mybatisBatch：简化 MyBatis 批量保存的插件实践</h1>
+      <p style="color:var(--text-dim); margin-bottom:1.5rem;">
+        <span style="color:var(--text-muted);">作者:</span> 生一鸣 &nbsp;
+        <span style="color:var(--text-muted);">日期:</span> 2022-04 &nbsp;
+        <span class="tag green">MyBatis</span> <span class="tag blue">Java</span> <span class="tag orange">开源</span>
+        <br><span style="color:var(--text-muted);">GitHub:</span> <a href="https://github.com/egd-prodigal/mybatisBatch" target="_blank" style="font-size:0.9em;">github.com/egd-prodigal/mybatisBatch</a>
+      </p>
+
+      <hr class="divider">
+
+      <div class="article">
+
+        <h2>背景：数据汇聚入库的最后一环</h2>
+        <p>
+          2022 年，我所在的项目团队正在推进一个跨省数据汇聚项目。业务的运行在各省，数据在办理业务期间持续变化，发生变化后需要快速上传到部级平台，对时效性要求很高。本项目负责的是这条数据链路的最后一环——数据入库，也就是将各省汇聚过来的业务数据高效地写入部级数据库。
+        </p>
+        <p>
+          业务系统服务全国，涉及多个业务分类和几十上百张表，每张表都需要编写批量保存方法。如果每张表都以 <code style="color:var(--orange);">foreach</code> 拼接的方式编写批量保存代码，那将是一件极度痛苦的工作——项目初期接入的业务组同事就是这么做的，工作量极大。以传统方式编写批量插入，需要基于 MyBatis 的动态 SQL 机制，使用 <code style="color:var(--orange);">&lt;foreach&gt;</code> 标签拼接 SQL 语句，这不仅带来了不小的开发量，还增加了错误发生的概率（如空字段问题、SQL 过长问题等），开发人员甚至还需要适配不同数据库的批量保存语法差异。
+        </p>
+        <p>
+          虽然 MyBatis 提供了批量模式（Batch Executor），但开发者仍需编写大量样板代码，并且还需考虑分页、事务、性能等问题。当我在业余时间深入了解 MyBatis 的批量模式之后，决定开发一个插件来封装这些复杂性，优先给团队同事使用，以减轻他们的开发负担。
+        </p>
+
+        <h2>核心思路：封装复杂，暴露简单</h2>
+        <p>
+          插件的设计目标很明确——让开发者只需编写单条插入的 SQL，批量逻辑由插件自动处理。核心实现基于 MyBatis 的 Batch Executor 模式：拦截 Mapper 方法的调用，将传入的集合参数按批次拆分，复用单条插入的 MappedStatement，在独立的 Batch SqlSession 中逐条执行，最终统一提交。
+        </p>
+        <p>本插件基于 MyBatis 批量模式封装了批量保存数据的功能，并且整合了 Spring 事务管理框架，使开发人员能够更容易地编写正确的高性能数据库批量保存代码。</p>
+
+        <h2>使用方式：一个注解搞定</h2>
+        <p>在 Mapper 里要做批量保存的方法上添加注解 <code style="color:var(--purple);">@BatchInsert</code>，这个方法映射的 SQL 语句是单条数据保存。注解参数说明：</p>
+
+        <pre style="background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:10px 16px;overflow-x:auto;font-size:0.8rem;line-height:1.8;margin:0.8rem 0;">
+字段                格式      用途说明
+──────────────────────────────────────────────────
+collection         String    方法入参的集合对象名，与 @Param 注解的值一致
+item               String    SQL 语句里的对象名
+batchSize          int       分页提交的数量，默认 500
+insert             String    指定的单条插入方法名，可以为空
+flushStatements    boolean   是否预执行 sql，默认为 true</pre>
+
+        <p>基础示例：</p>
+        <pre style="background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:12px 16px;overflow-x:auto;font-size:0.85rem;line-height:1.6;margin:0.8rem 0;">
+@Insert({"insert into test (id, name)", "values", "(#{po.id}, #{po.name})"})
+@BatchInsert(collection = "testPOS", item = "po", batchSize = 1000)
+void batchInsert(@Param("testPOS") List&lt;TestPO&gt; po);</pre>
+
+        <p>如果只有一个集合入参且 SQL 中参数名与实体字段一致，可以进一步简化：</p>
+        <pre style="background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:12px 16px;overflow-x:auto;font-size:0.85rem;line-height:1.6;margin:0.8rem 0;">
+@Insert("insert into test (id, name) values (#{id}, #{name})")
+@BatchInsert
+void batchInsert(List&lt;TestPO&gt; po);</pre>
+
+        <p>上面的代码与传统 <code style="color:var(--orange);">foreach</code> 方式功能一致，但性能更优（见后文性能测试）：</p>
+        <pre style="background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:12px 16px;overflow-x:auto;font-size:0.85rem;line-height:1.6;margin:0.8rem 0;">
+@Insert({"&lt;script&gt;",
+        "insert into test(id, name) values ",
+        "&lt;foreach collection='testPOS' index='index' item='po' separator=','&gt;",
+        "(#{po.id}, #{po.name})",
+        "&lt;/foreach&gt;",
+        "&lt;/script&gt;"})
+void forEachInsert(@Param("testPOS") List&lt;TestPO&gt; po);</pre>
+
+        <h2>复用已有单条插入方法</h2>
+        <p>除了基于 <code style="color:var(--cyan);">@Insert</code> 注解的方式，还支持 <code style="color:var(--cyan);">@InsertProvider</code> 和 XML 方式，只需在对应 Mapper 接口方法上增加 <code style="color:var(--purple);">@BatchInsert</code> 注解即可。</p>
+        <p>参数 <code style="color:var(--orange);">insert</code> 用于指定已有的单条插入方法名，该方法必须在当前 Mapper 中存在，且单个保存方法的参数是批量保存参数的子集。这样批量保存方法可以不用重复编写 SQL：</p>
+        <pre style="background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:12px 16px;overflow-x:auto;font-size:0.85rem;line-height:1.6;margin:0.8rem 0;">
+@Insert({"insert into ${tableName} (id, name)", "values", "(#{po.id}, #{po.name})"})
+void insertOne(@Param("tableName") String tableName, @Param("po") TestPO po);
+
+// item 必须与 insertOne 的 SQL 语句里的对象名一致
+@BatchInsert(insert = "insertOne", collection = "testPOS", item = "po", batchSize = 1000)
+void batchInsert(@Param("tableName") String tableName,
+                 @Param("unused") String unused,
+                 @Param("testPOS") List&lt;TestPO&gt; po);</pre>
+
+        <blockquote>
+          注意：1. 由于本插件基于 MyBatis BATCH 模式并手动批量提交已执行的 SQL，<strong>不大建议在强事务性业务中使用</strong>，推荐用于异步批量保存场景，以及事务里批量保存后不再访问数据库的场景。2. 如果指定了 insert 参数的同时方法也拥有 @Insert 注解，则取 insert 参数配置的方法。3. 启动时不会检查正确性，如果编写有误，将在执行时抛出相应异常。
+        </blockquote>
+
+        <h2>环境集成</h2>
+
+        <h3>Spring Boot 项目</h3>
+        <p>增加如下依赖即可自动装配：</p>
+        <pre style="background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:12px 16px;overflow-x:auto;font-size:0.85rem;line-height:1.6;margin:0.8rem 0;">
+&lt;dependency&gt;
+    &lt;groupId&gt;io.github.egd-prodigal&lt;/groupId&gt;
+    &lt;artifactId&gt;mybatis-batch-starter&lt;/artifactId&gt;
+    &lt;version&gt;2.0.9&lt;/version&gt;
+&lt;/dependency&gt;</pre>
+        <p>示例见项目：sample → springboot-sample。如果是自己装配 SqlSessionFactoryBean 的，不需要额外编写添加插件的代码，会自动添加。</p>
+
+        <h3>纯 Spring 项目</h3>
+        <p>增加如下依赖（前提是已在项目中整合好 MyBatis）：</p>
+        <pre style="background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:12px 16px;overflow-x:auto;font-size:0.85rem;line-height:1.6;margin:0.8rem 0;">
+&lt;dependency&gt;
+    &lt;groupId&gt;io.github.egd-prodigal&lt;/groupId&gt;
+    &lt;artifactId&gt;mybatis-batch-spring&lt;/artifactId&gt;
+    &lt;version&gt;2.0.9&lt;/version&gt;
+&lt;/dependency&gt;</pre>
+        <p>配置方式二选一：</p>
+        <pre style="background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:12px 16px;overflow-x:auto;font-size:0.85rem;line-height:1.6;margin:0.8rem 0;">
+// 方式一：指定扫描包路径
+&lt;context:component-scan base-package="io.github.egd.prodigal.mybatis.batch.config"/&gt;
+
+// 方式二：手动注册 Bean (XML)
+&lt;bean class="io.github.egd.prodigal.mybatis.batch.config.MybatisBatchConfiguration"/&gt;
+
+// 方式二：手动注册 Bean (JavaConfig)
+@Bean
+public MybatisBatchConfiguration mybatisBatchConfiguration() {
+    return new MybatisBatchConfiguration();
+}</pre>
+
+        <h3>非 Spring 项目</h3>
+        <p>增加核心依赖：</p>
+        <pre style="background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:12px 16px;overflow-x:auto;font-size:0.85rem;line-height:1.6;margin:0.8rem 0;">
+&lt;dependency&gt;
+    &lt;groupId&gt;io.github.egd-prodigal&lt;/groupId&gt;
+    &lt;artifactId&gt;mybatis-batch&lt;/artifactId&gt;
+    &lt;version&gt;2.0.9&lt;/version&gt;
+&lt;/dependency&gt;</pre>
+        <p>在 mybatis-config.xml 中配置插件：</p>
+        <pre style="background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:12px 16px;overflow-x:auto;font-size:0.85rem;line-height:1.6;margin:0.8rem 0;">
+&lt;plugins&gt;
+    &lt;plugin interceptor="io.github.egd.prodigal.mybatis.batch.plugins.BatchInsertInterceptor"/&gt;
+&lt;/plugins&gt;</pre>
+        <p>编写初始化代码，在执行数据访问前调用：</p>
+        <pre style="background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:12px 16px;overflow-x:auto;font-size:0.85rem;line-height:1.6;margin:0.8rem 0;">
+BatchInsertContext.setSqlSessionFactory(sqlSessionFactory);
+BatchInsertScanner.addClass(ITestMapper.class);
+BatchInsertScanner.scan();</pre>
+        <p>示例见项目：sample → simple-sample（此项目也承载了性能测试功能）。</p>
+
+        <h2>事务：多会话共享的核心难题</h2>
+        <p>
+          这是插件开发中最具技术挑战的部分。插件的核心是使用一个批量模式的 SqlSession 执行单条保存的 MappedStatement，而其他常规数据库访问使用默认的 SqlSession。两个 SqlSession 之间不能直接互相感知对方的操作。
+        </p>
+        <p>
+          解决的关键在于 <code style="color:var(--green);">SqlSession.flushStatements()</code> 方法。在无事务的情况下执行该方法，数据将会直接写入数据库；在有事务管理的情况下，它将会把自己会话里的数据库操作"共享"给当前事务。最终调用的是 <code style="color:var(--orange);">java.sql.Statement.executeBatch()</code>，由各数据库驱动实现。因此，插件对事务控制的实际表现也因数据库而异，但不管使用什么数据库，常规的读写操作跟批量模式下的读写操作都被同一个事务管理器管辖，要么一起成功要么一起失败。
+        </p>
+        <p>本插件保证一个事务里的多个批量保存方法使用相同的批量保存会话。注解参数 <code style="color:var(--orange);">flushStatements</code> 默认为 true，保证多个批量保存操作能即时共享给事务。</p>
+
+        <p>以下示例均假定在 Spring 事务中执行：</p>
+
+        <p><strong>例1 — 批量保存感知到之前执行的结果：</strong></p>
+        <pre style="background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:12px 16px;overflow-x:auto;font-size:0.85rem;line-height:1.6;margin:0.8rem 0;">
+// 默认 SqlSession 直接以主键 1 保存
+testMapper.insert(1);
+List&lt;Integer&gt; list = new ArrayList&lt;&gt;();
+list.add(1); list.add(2);
+// 批量保存创建新的 SqlSession，flushStatements=true 时会抛主键冲突异常
+// 设为 false 则不会立即抛异常，但在事务提交时抛出
+testMapper.batchInsert(list);</pre>
+
+        <p><strong>例2 — 单个保存感知到批量保存的结果：</strong></p>
+        <pre style="background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:12px 16px;overflow-x:auto;font-size:0.85rem;line-height:1.6;margin:0.8rem 0;">
+List&lt;Integer&gt; list = new ArrayList&lt;&gt;();
+list.add(1); list.add(2);
+// flushStatements 为 true，批量保存后即时刷入事务
+testMapper.batchInsert(list);
+// 默认 SqlSession 中执行，会立即抛出主键冲突异常
+testMapper.insert(1);</pre>
+
+        <p><strong>例3 — 默认事务无法感知到批量保存的结果：</strong></p>
+        <pre style="background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:12px 16px;overflow-x:auto;font-size:0.85rem;line-height:1.6;margin:0.8rem 0;">
+testMapper.insert(1);
+List&lt;Integer&gt; list = generateList(5); // 构造 1~5 的集合
+// flushStatements=false, batchSize>5，不会抛异常
+testMapper.batchInsert(list);
+int count = testMapper.count();
+// count = 1，事务无法感知批量保存的结果
+// 事务提交时将抛出主键冲突异常</pre>
+
+        <p><strong>例4 — 批量保存部分提交：</strong></p>
+        <pre style="background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:12px 16px;overflow-x:auto;font-size:0.85rem;line-height:1.6;margin:0.8rem 0;">
+List&lt;Integer&gt; list = generateList(105); // 构造 1~105
+// flushStatements=false, batchSize=10
+testMapper.batchInsert(list);
+int count = testMapper.count();
+// 每 10 条 flushStatements 一次，前 100 条已共享，后 5 条未达阈值
+// count = 100
+// 事务提交后数据库有 105 条</pre>
+
+        <p>不同数据库对批量保存事务管理的表现差异：</p>
+        <ul>
+          <li>Oracle — 会话共享到的数据更新数为执行到报错那一条的上一条数量</li>
+          <li>MSSQL — 同 Oracle</li>
+          <li>MySQL — 会话共享到的更新数为上一批批处理成功的数量</li>
+          <li>PostgreSQL — 直接把当前事务设为 aborted，后续无法再访问数据库；但如果捕获异常不回滚并正常提交，数据为执行到报错那一条的上一条</li>
+        </ul>
+        <p>事务功能测试见 sample 下的 oracle-sample、mysql-sample、mssql-sample、postgre-sample 项目。</p>
+
+        <h2>性能测试</h2>
+        <p>基于 MySQL、Oracle、PostgreSQL、MSSQL 四种数据库，对比 Batch 方式和 Foreach 方式的性能。测试方法：一次性保存 1,000,000 条数据，1000 条一批，Batch 方式配置 batchSize 参数，Foreach 手动分页，两种方式均以无事务方式运行，连续测试 5 次取平均值。单位：毫秒。</p>
+
+        <blockquote>
+          MySQL 数据库连接字符串务必加上参数 <code style="color:var(--green);">rewriteBatchedStatements=true</code>，否则批量保存无效。
+        </blockquote>
+
+        <pre style="background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:12px 16px;overflow-x:auto;font-size:0.8rem;line-height:1.8;margin:0.8rem 0;">
+           MySQL(batch)  MySQL(foreach)  Oracle(batch)  Oracle(foreach)  PG(batch)  PG(foreach)  MSSQL(batch)  MSSQL(foreach)
+第1次       14399         18810           8236            9002          15971       18763         20293          26365
+第2次       13797         18365           8457            8556          18874       17755         21673          25676
+第3次       13649         18356           6840           10093          16185       17713         20834          26257
+第4次       13710         18836           6795           10516          16777       17253         21094          25441
+第5次       13152         19292           8213            8307          16450       16434         20511          25775
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+平均        13741         18732           7708            9295          16851       17584         20881          25903
+优势        +26.6%                         +17.1%                         +4.2%                      +19.4%</pre>
+
+        <p>Batch 模式在四种数据库上均有性能优势，MySQL 场景优势最为明显（快 26.6%）。性能测试详情见 sample → simple-sample 里的代码。</p>
+
+        <h2>补充说明</h2>
+
+        <p><strong>关于 spring-batch：</strong>与本插件没有关系。Spring Batch 的批处理组件 <code style="color:var(--cyan);">MyBatisBatchItemWriter</code> 是另一种 mybatis 批量保存的方式，使用该组件的用户大概率不需要使用本插件。配置示例：</p>
+        <pre style="background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:12px 16px;overflow-x:auto;font-size:0.85rem;line-height:1.6;margin:0.8rem 0;">
+@Bean
+public MyBatisBatchItemWriter&lt;TestPO&gt; itemWriter() {
+   MyBatisBatchItemWriterBuilder&lt;TestPO&gt; builder = new MyBatisBatchItemWriterBuilder&lt;&gt;();
+   builder.sqlSessionTemplate(new SqlSessionTemplate(sqlSessionFactory, ExecutorType.BATCH));
+   builder.statementId("io.github...ITestMapper.insert"); // 完整路径: package.class.method
+   builder.assertUpdates(false);
+   return builder.build();
+}</pre>
+        <p>如果单个保存方法指定了 <code style="color:var(--cyan);">@Param</code> 注解，还需额外设置 <code style="color:var(--orange);">itemToParameterConverter</code>。</p>
+
+        <p><strong>关于 mybatis-dynamic-sql：</strong>与本插件也没有关系。在网上搜寻 mybatis 批量保存教程时，可能会看到示例代码中写着 BatchInsert，实际上来自 mybatis-dynamic-sql——由 MyBatis 官方出品的基于 Java 代码实现动态 SQL 生成的组件，并不能从本质上提供批量保存的功能，只是换了一种写法。从个人角度以及实际开发经历来说，业务系统更适合使用基于 XML 编写 SQL 的方式——无论是业务逻辑还是数据库访问代码，都应从团队出发，编写简洁易读的代码。mybatis-dynamic-sql 对 ORM 的设计值得学习，它更像是提供了 MyBatis 官方所期望的数据库访问层代码编写方式，可以吸收借鉴。</p>
+
+        <h2>更新日志</h2>
+        <ul>
+          <li><strong>v2.0.3</strong> — 发布第一个 release 版本</li>
+          <li><strong>v2.0.4</strong> — 事务里多个批量保存使用同一个会话</li>
+          <li><strong>v2.0.5</strong> — Spring 事务里强制 flushStatements</li>
+          <li><strong>v2.0.6</strong> — 批量模式增加事务自动提交参数</li>
+          <li><strong>v2.0.9</strong> — 兼容 Mapper 原生 timeout 参数</li>
+        </ul>
+
+        <p><strong>后续计划：</strong>支持 UPDATE、DELETE 等其他 DML 语句。</p>
+
+        <hr class="divider">
+
+        <p style="color:var(--text-dim); font-size:0.9rem;">
+          // 注：Mybatis-Plus 已经实现了本插件提供的功能，考虑到项目组开发习惯，并未引入 Mybatis-Plus，故而开发此插件。<br>
+          // 兼容版本：MyBatis 3.4.5 ~ 3.5.9，SpringBoot 2.1.3 ~ 2.7.3，Spring 5.1.5 ~ 5.3.22，可能还能兼容更低版本。<br>
+          // 本插件开发时基于 MyBatis 3.5.9，SpringBoot 2.7.3，Spring 5.3.22。
+        </p>
+
+        <hr class="divider">
+
+        <p style="color:var(--text-muted); font-size:0.85rem;">
+          // Maven Central: io.github.egd-prodigal:mybatis-batch-starter:2.0.9<br>
+          // GitHub: <a href="https://github.com/egd-prodigal/mybatisBatch" target="_blank">github.com/egd-prodigal/mybatisBatch</a><br>
+          // 欢迎 issue 和 PR
+        </p>
+      </div>
+
+      <div class="terminal-footer">
+        <span class="prompt">❯</span> <span style="color:var(--text-muted);">END OF FILE · 按 <a href="../blog.html">cd ../</a> 返回博客列表</span>
+        <span class="cursor"></span>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
