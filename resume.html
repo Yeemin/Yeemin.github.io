@@ -137,7 +137,7 @@
         <div class="entry-title">交管 12123 — 交管小安（智能问答）</div>
         <div class="entry-meta">2025.04 — 至今</div>
         <div class="entry-detail">
-          基于大语言模型的智能问答服务。借助电信星辰智能体平台完成工作流搭建，使用 DeepSeek-V3 大模型。搭建基于问答对的知识库，完全以知识库答案回复用户，避免大模型幻觉。基于 SSE 机制实现流式输出，平均问答耗时 3 秒以内，命中知识库回答准确率 96% 以上。目前已在江苏浙江两省试点。
+          基于大语言模型的智能问答服务。与电信公司合作，使用电信星辰智能体平台完成工作流搭建与部署，模型选用 DeepSeek-V3-0324 版本，集成电信语音识别和语音合成能力，实现短语音转文字输入和实时音频流语音播报功能。作为交管系统智能化基座，连接现有交管信息系统，设计并研发基于卡片展示、半屏操作和业务功能跳转三种模式的"边问边办"智能问答模式，使用大模型的总结生成能力对回答内容进行二次包装，结合用户实际业务情况进行下一步问答推荐引导。提示词全程基于标准的交管业务指南和用户真实业务数据并进行脱敏处理，避免大模型幻觉等问题，回答内容通过电信安全围栏二次保障安全性和合规性。目前已在江苏浙江两省试点，满足平均问答耗时 3 秒以内，命中知识库的回答准确率 96% 以上。深度集成交管系统软件架构，设计基于短链的安全机制，基于 SSE 机制实现流式输出。
         </div>
       </div>
 
@@ -167,6 +167,14 @@
         <div class="skill-track"><div class="skill-fill purple" style="width:78%"></div></div>
       </div>
       <div class="skill-bar">
+        <div class="skill-label"><span>大模型微调 (SFT / LoRA)</span><span style="color:var(--purple);">掌握</span></div>
+        <div class="skill-track"><div class="skill-fill purple" style="width:70%"></div></div>
+      </div>
+      <div class="skill-bar">
+        <div class="skill-label"><span>Harness CI/CD / 持续交付</span><span style="color:var(--orange);">熟练</span></div>
+        <div class="skill-track"><div class="skill-fill orange" style="width:75%"></div></div>
+      </div>
+      <div class="skill-bar">
         <div class="skill-label"><span>数据结构 / 算法 / 设计模式</span><span style="color:var(--orange);">扎实</span></div>
         <div class="skill-track"><div class="skill-fill orange" style="width:80%"></div></div>
       </div>
@@ -189,7 +197,9 @@
         <span class="tag green">微服务架构</span>
         <span class="tag blue">分布式系统</span>
         <span class="tag orange">高并发</span>
+        <span class="tag orange">Harness</span>
         <span class="tag purple">大模型/RAG</span>
+        <span class="tag purple">模型微调</span>
         <span class="tag green">DeepSeek</span>
         <span class="tag blue">Vue</span>
       </p>
@@ -212,11 +222,93 @@
         热爱编程，有良好的分析问题、解决问题的能力。吃苦耐劳、待人热情、真诚友善，有较强的适应能力。工作中认真负责，严格遵守代码规范，在团队协同开发中表现优异。
       </p>
 
+      <!-- Download -->
+      <div id="download-area" style="margin-bottom:0.6rem;">
+        <a href="#" id="download-trigger"
+           style="color:var(--text-muted);font-size:0.75rem;text-decoration:none;"
+           onmouseover="if(!this._locked)this.style.color='var(--text-dim)'"
+           onmouseout="if(!this._locked)this.style.color='var(--text-muted)'">
+          ↓ 下载简历
+        </a>
+        <div id="download-prompt" style="display:none;margin-top:6px;"></div>
+      </div>
+
       <!-- Footer -->
       <div class="terminal-footer">
         <span class="prompt">❯</span> <span style="color:var(--text-muted);">END OF FILE · 按 <a href="index.html">cd ~</a> 返回首页</span>
         <span class="cursor"></span>
       </div>
+
+      <script>
+        (function() {
+          var trigger = document.getElementById('download-trigger');
+          var promptBox = document.getElementById('download-prompt');
+          var inputEl = null;
+          var active = false;
+
+          function buildPrompt(msg, isError) {
+            promptBox.innerHTML = '';
+            var line = document.createElement('div');
+            line.style.cssText = 'display:flex;align-items:center;gap:4px;font-size:0.8rem;';
+
+            var promptSpan = document.createElement('span');
+            promptSpan.className = 'prompt';
+            promptSpan.textContent = '❯';
+            line.appendChild(promptSpan);
+
+            var label = document.createElement('span');
+            label.style.color = isError ? 'var(--red)' : 'var(--text-dim)';
+            label.textContent = msg || '请输入生一鸣手机号后6位: ';
+            line.appendChild(label);
+
+            inputEl = document.createElement('input');
+            inputEl.type = 'password';
+            inputEl.maxLength = 6;
+            inputEl.style.cssText = 'background:transparent;border:none;color:var(--text);font-family:var(--font);font-size:0.8rem;outline:none;width:90px;caret-color:var(--green);';
+            line.appendChild(inputEl);
+
+            promptBox.appendChild(line);
+            promptBox.style.display = 'block';
+            setTimeout(function() { if (inputEl) inputEl.focus(); }, 50);
+
+            inputEl.addEventListener('keydown', function(e) {
+              if (e.key === 'Enter') {
+                var val = inputEl.value.trim();
+                if (val === '120514') {
+                  promptBox.innerHTML = '<span style="color:var(--green);font-size:0.8rem;">❯ 密码正确，正在下载...</span>';
+                  var a = document.createElement('a');
+                  a.href = 'resume-2026wx.pdf';
+                  a.download = '生一鸣简历-2026.pdf';
+                  document.body.appendChild(a);
+                  a.click();
+                  document.body.removeChild(a);
+                  setTimeout(function() {
+                    promptBox.style.display = 'none';
+                    active = false;
+                    trigger.style.color = 'var(--text-muted)';
+                  }, 2000);
+                } else {
+                  inputEl.value = '';
+                  buildPrompt('密码错误，请重试: ', true);
+                }
+              }
+              if (e.key === 'Escape') {
+                promptBox.style.display = 'none';
+                active = false;
+                trigger.style.color = 'var(--text-muted)';
+              }
+            });
+          }
+
+          trigger.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (active) return;
+            active = true;
+            trigger.style.color = 'var(--text-dim)';
+            buildPrompt('请输入生一鸣手机号后6位: ', false);
+          });
+        })();
+      </script>
     </div>
   </div>
 
